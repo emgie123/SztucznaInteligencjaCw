@@ -32,7 +32,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Web.6.9.6\lib\net45\MySql.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,15 +63,14 @@
   <ItemGroup>
     <Compile Include="Classes\Abstract\Calculator.cs" />
     <Compile Include="Classes\Abstract\Meal.cs" />
-    <Compile Include="Classes\Calculator.cs" />
     <Compile Include="Classes\Diet.cs" />
     <Compile Include="Classes\Interfaces\ICalculator.cs" />
     <Compile Include="Classes\Interfaces\IMeal.cs" />
     <Compile Include="Classes\Interfaces\IPerson.cs" />
+    <Compile Include="Classes\Interfaces\IProduct.cs" />
     <Compile Include="Classes\NonAbstract\Calculator\BasicCalculator.cs" />
     <Compile Include="Classes\NonAbstract\Calculator\DetailCalculator.cs" />
     <Compile Include="Classes\NonAbstract\Meals\AfternoonMeal.cs" />
-    <Compile Include="Classes\NonAbstract\BasicCalculator.cs" />
     <Compile Include="Classes\NonAbstract\Meals\EveningMeal.cs" />
     <Compile Include="Classes\NonAbstract\Meals\ForenoonMeal.cs" />
     <Compile Include="Classes\NonAbstract\Meals\MorningMeal.cs" />
@@ -84,6 +100,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,7 +114,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DBModel\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

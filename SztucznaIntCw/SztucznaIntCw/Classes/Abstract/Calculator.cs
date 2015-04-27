@@ -13,5 +13,7 @@ namespace SztucznaIntCw.Classes.Abstract
         {
             throw new NotImplementedException();
         }
+
+        public abstract IPerson GetKcalValue(IPerson person);
     }
 }
