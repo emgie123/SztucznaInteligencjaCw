@@ -14,7 +14,10 @@ namespace SztucznaIntCw
         {
             InitializeComponent();
             genderTextBox.MaxLength = 1;
-            dataGroupBox.Enabled = false;
+            simpleDataRadioButton.Checked = true;
+            EnableBasicData();
+            weightTextBox.MaxLength = 3;
+            heightTextBox.MaxLength = 3;
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -31,24 +34,9 @@ namespace SztucznaIntCw
 
         private void genderTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(e.KeyChar == 'M' || e.KeyChar == 'K' || e.KeyChar =='m' || e.KeyChar =='k');
+            e.Handled = !(e.KeyChar == 'M' || e.KeyChar == 'K' || e.KeyChar =='m' || e.KeyChar =='k' || e.KeyChar == (char)Keys.Back);
         }
 
-        private void dataQuestionButton_Click(object sender, EventArgs e)
-        {
-           providedDataType = detailsDataRadioButton.Checked ? TypeOfProvidedData.Detail : TypeOfProvidedData.Basic;
-
-            if (providedDataType == TypeOfProvidedData.Detail)
-            {
-
-                EnableDetailsData();
-            }
-            else
-            {
-                EnableBasicData();  
-            }
-          
-        }
 
         private void EnableBasicData()
         {
@@ -76,6 +64,32 @@ namespace SztucznaIntCw
         {
             Calculator calc = new Calculator();
             calc.Verify(this);
+            
+        }
+
+        private void simpleDataRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            EnableBasicData();
+        }
+
+        private void detailsDataRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            EnableDetailsData();
+        }
+
+        private void genderTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void weightTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {//48-57
+            e.Handled = (e.KeyChar<48 || e.KeyChar>57);
+        }
+
+        private void heightTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (e.KeyChar < 48 || e.KeyChar > 57);
         }
     }
 }

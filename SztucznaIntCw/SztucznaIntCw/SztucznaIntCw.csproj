@@ -44,11 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Action.cs" />
-    <Compile Include="Classes\BMICalculator.cs" />
+    <Compile Include="Classes\Calculator.cs" />
     <Compile Include="Classes\DailyKcalCalculator.cs" />
-    <Compile Include="Classes\TAction.cs" />
-    <Compile Include="Classes\TFunc.cs" />
+    <Compile Include="Classes\Diet.cs" />
+    <Compile Include="Classes\Person.cs" />
+    <Compile Include="Enums\Food\Meats.cs" />
+    <Compile Include="Enums\TypeOfActivity.cs" />
+    <Compile Include="Enums\TypeOfPhysique.cs" />
     <Compile Include="Enums\TypeOfProvidedData.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
