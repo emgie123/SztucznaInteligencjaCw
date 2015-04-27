@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SztucznaIntCw.Classes;
+using SztucznaIntCw.Classes.Interfaces;
 using SztucznaIntCw.Enums;
 
 namespace SztucznaIntCw
@@ -62,14 +63,16 @@ namespace SztucznaIntCw
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
-            Calculator calc = new Calculator();
-            calc.Verify(this);
-            
+           // ICalculator calc = new 
+  
+           // neededKcalLabel.Text = @"Twoje zapotrzebowanie wynosi 1943 kcal, BMI: 20.3";
+
         }
 
         private void simpleDataRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             EnableBasicData();
+           
         }
 
         private void detailsDataRadioButton_CheckedChanged(object sender, EventArgs e)

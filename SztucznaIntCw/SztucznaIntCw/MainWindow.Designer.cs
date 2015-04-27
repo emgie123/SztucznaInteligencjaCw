@@ -264,11 +264,11 @@
             // neededKcalLabel
             // 
             this.neededKcalLabel.AutoSize = true;
-            this.neededKcalLabel.Location = new System.Drawing.Point(314, 24);
+            this.neededKcalLabel.Location = new System.Drawing.Point(9, 377);
             this.neededKcalLabel.Name = "neededKcalLabel";
-            this.neededKcalLabel.Size = new System.Drawing.Size(160, 13);
+            this.neededKcalLabel.Size = new System.Drawing.Size(43, 13);
             this.neededKcalLabel.TabIndex = 2;
-            this.neededKcalLabel.Text = "Twoje zapotrzebowanie wynosi: ";
+            this.neededKcalLabel.Text = "            ";
             // 
             // MainWindow
             // 
@@ -279,7 +279,7 @@
             this.Controls.Add(this.inputDataTypeGroupBox);
             this.Controls.Add(this.dataGroupBox);
             this.Name = "MainWindow";
-            this.Text = "Diet";
+            this.Text = "Meal";
             this.dataGroupBox.ResumeLayout(false);
             this.dataGroupBox.PerformLayout();
             this.activityGroupBox.ResumeLayout(false);

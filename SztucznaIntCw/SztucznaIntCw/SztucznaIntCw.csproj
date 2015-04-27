@@ -44,10 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Abstract\Calculator.cs" />
+    <Compile Include="Classes\Abstract\Meal.cs" />
     <Compile Include="Classes\Calculator.cs" />
-    <Compile Include="Classes\DailyKcalCalculator.cs" />
     <Compile Include="Classes\Diet.cs" />
-    <Compile Include="Classes\Person.cs" />
+    <Compile Include="Classes\Interfaces\ICalculator.cs" />
+    <Compile Include="Classes\Interfaces\IMeal.cs" />
+    <Compile Include="Classes\Interfaces\IPerson.cs" />
+    <Compile Include="Classes\NonAbstract\Calculator\BasicCalculator.cs" />
+    <Compile Include="Classes\NonAbstract\Calculator\DetailCalculator.cs" />
+    <Compile Include="Classes\NonAbstract\Meals\AfternoonMeal.cs" />
+    <Compile Include="Classes\NonAbstract\BasicCalculator.cs" />
+    <Compile Include="Classes\NonAbstract\Meals\EveningMeal.cs" />
+    <Compile Include="Classes\NonAbstract\Meals\ForenoonMeal.cs" />
+    <Compile Include="Classes\NonAbstract\Meals\MorningMeal.cs" />
+    <Compile Include="Classes\NonAbstract\Meals\NoonMeal.cs" />
+    <Compile Include="Classes\NonAbstract\Person.cs" />
     <Compile Include="Enums\Food\Meats.cs" />
     <Compile Include="Enums\TypeOfActivity.cs" />
     <Compile Include="Enums\TypeOfPhysique.cs" />
@@ -85,6 +97,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

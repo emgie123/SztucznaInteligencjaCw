@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SztucznaIntCw.Classes
+namespace SztucznaIntCw.Classes.NonAbstract
 {
-    public class DailyKcalCalculator
+    class BasicCalculator
     {
-
-      
     }
 }

@@ -2,16 +2,9 @@
 
 namespace SztucznaIntCw.Classes
 {
-    public class Calculator
+    public interface ICalculator
     {
 
-        public bool Verify(MainWindow mainWindow)
-        {
-         
-          
-
-            //weryfikacja czy wprowadzone dane są poprawne
-            return true;
-        }
+        float GetKcalValue();
     }
 }
