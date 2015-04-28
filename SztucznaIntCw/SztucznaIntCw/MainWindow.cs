@@ -94,5 +94,20 @@ namespace SztucznaIntCw
         {
             e.Handled = (e.KeyChar < 48 || e.KeyChar > 57);
         }
+
+        private void GenerateDefaultDiet_Click(object sender, EventArgs e)
+        {
+            //  Pobieramy z bazy wszystkie produkty
+            //  Na ich podstawie generujemy dietę zgodną z zaznaczonym radiobuttonem
+            //  Wyświetlamy grubej świni przykładową dietę redukcyjną (nie chcemy grubasów w naszym kraju) :D
+        }
+
+        private void GeneratePersonalizedDiet_Click(object sender, EventArgs e)
+        {
+            QuestionWindow questionWindow = new QuestionWindow();
+            questionWindow.Show();
+        }
+
+
     }
 }
