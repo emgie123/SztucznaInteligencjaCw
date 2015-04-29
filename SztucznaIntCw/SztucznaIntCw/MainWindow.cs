@@ -30,6 +30,7 @@ namespace SztucznaIntCw
             heightTextBox.MaxLength = 3;
 
             SystemUser = new Person();
+            QuestionCounter = 0;
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -134,7 +135,10 @@ namespace SztucznaIntCw
                  }
             }
 
-            QuestionWindow questionWindow = new QuestionWindow(QuestionList[0], SystemUser);
+            QuestionWindow questionWindow = new QuestionWindow(QuestionList, SystemUser)
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
             questionWindow.ShowDialog();
             
             

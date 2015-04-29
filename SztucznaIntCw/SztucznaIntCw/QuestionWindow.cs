@@ -18,7 +18,8 @@ namespace SztucznaIntCw
         private Dictionary<Label, TextBox> categoryValue;
         private List<CheckBox> categorySelect;
 
-        private List<Product> injectedProducts; 
+        private List<Product> injectedProducts;
+        private List<Question> questions;
         private Person systemUser;
  
         public QuestionWindow()
@@ -28,15 +29,17 @@ namespace SztucznaIntCw
        
         }
 
-        public QuestionWindow(Question question, Person person)
+        public QuestionWindow(List<Question> questions, Person person)
         {
             InitializeComponent();
 
             systemUser = person;
-            injectedProducts = question.Products;
+            this.questions = questions;
 
-            this.richTextBox1.Text = question.Content;
-            this.label2.Text = question.Number.ToString();
+            injectedProducts = questions[MainWindow.QuestionCounter].Products;
+
+            this.richTextBox1.Text = questions[MainWindow.QuestionCounter].Content;
+            this.label2.Text = questions[MainWindow.QuestionCounter].Number.ToString();
 
             categoryValue = new Dictionary<Label, TextBox>();
             categorySelect = new List<CheckBox>();
@@ -45,7 +48,7 @@ namespace SztucznaIntCw
             int yCoordinate = 5;
 
 
-            foreach (var product in question.Products)
+            foreach (var product in injectedProducts)
             {
                 categoryValue.Add(new Label() {Location = new Point(xCoordinate, yCoordinate), 
                     Text = product.Name}, new TextBox(){Location = new Point(xCoordinate + 200, yCoordinate), MaxLength = 2, Text = "50"});
@@ -96,6 +99,24 @@ namespace SztucznaIntCw
 
                 categorySelectCounter++;
             }
+
+            MainWindow.QuestionCounter++;
+            if (MainWindow.QuestionCounter < questions.Count)
+            {
+                QuestionWindow nextQuestionWindow = new QuestionWindow(questions, systemUser)
+                {
+                    StartPosition = FormStartPosition.CenterParent
+                };
+
+                this.Hide();
+                nextQuestionWindow.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                this.Close();
+            }
+            
 
         }
 
