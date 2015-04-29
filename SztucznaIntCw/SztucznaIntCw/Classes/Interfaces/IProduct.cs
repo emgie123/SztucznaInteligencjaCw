@@ -15,6 +15,7 @@ namespace SztucznaIntCw.Classes.Interfaces
         float Kcal { get; set; }
         string CategoryName { get; set; }
         int Rating { get; set; }
+        bool IncludeInDiet { get; set; }
         //  Narazie więcej nie uzupełniałem bo zależy co będzie w modelu klasy siedziało
     }
 }

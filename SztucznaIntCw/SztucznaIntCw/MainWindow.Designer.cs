@@ -195,6 +195,7 @@
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.Size = new System.Drawing.Size(100, 20);
             this.weightTextBox.TabIndex = 5;
+            this.weightTextBox.TextChanged += new System.EventHandler(this.weightTextBox_TextChanged);
             this.weightTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.weightTextBox_KeyPress);
             // 
             // heightLabel

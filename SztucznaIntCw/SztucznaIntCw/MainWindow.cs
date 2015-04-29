@@ -116,8 +116,12 @@ namespace SztucznaIntCw
 
             using (var dbConnection = new Entities())
             {
-                categoriesList = from b in dbConnection.categories select b;
+                categoriesList = (from b in dbConnection.categories select b).ToList();
+                
+            }
 
+            using (var dbConnection = new Entities())
+            {      
                 foreach (var category in categoriesList)
                 {
                     productsList = from c in dbConnection.products where c.id_category == category.id_category select c;
@@ -125,8 +129,13 @@ namespace SztucznaIntCw
                     //QuestionList.Add(new Question(category.id_category, category.nameCategory, productsList));
                 }
             }
-            QuestionWindow questionWindow = new QuestionWindow();
+            QuestionWindow questionWindow = new QuestionWindow(QuestionList[0]);
             questionWindow.Show();
+        }
+
+        private void weightTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 

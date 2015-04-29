@@ -26,6 +26,8 @@ namespace SztucznaIntCw.Classes.NonAbstract
 
         public string Name { get; set; }
 
+        public bool IncludeInDiet { get; set; }
+
         public Product(products product)
         {
             try
@@ -41,5 +43,8 @@ namespace SztucznaIntCw.Classes.NonAbstract
                 Debug.WriteLine("Jedno z przekazanych pól tabeli przechowuje wartość null: {0}", ex);
             }
         }
+
+
+        
     }
 }
