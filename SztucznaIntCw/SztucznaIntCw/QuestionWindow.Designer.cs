@@ -55,9 +55,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(13, 44);
+            this.richTextBox1.Location = new System.Drawing.Point(13, 10);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(415, 86);
+            this.richTextBox1.Size = new System.Drawing.Size(415, 106);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
@@ -69,13 +69,14 @@
             this.NextCategory.TabIndex = 3;
             this.NextCategory.Text = "Następna kategoria";
             this.NextCategory.UseVisualStyleBackColor = true;
+            this.NextCategory.Click += new System.EventHandler(this.NextCategory_Click);
             // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Location = new System.Drawing.Point(13, 137);
+            this.panel1.Location = new System.Drawing.Point(13, 122);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(415, 186);
+            this.panel1.Size = new System.Drawing.Size(415, 201);
             this.panel1.TabIndex = 4;
             // 
             // QuestionWindow

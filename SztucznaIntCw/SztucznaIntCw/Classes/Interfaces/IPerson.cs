@@ -14,6 +14,7 @@ namespace SztucznaIntCw.Classes.Interfaces
          Diet diet { get; set; }
          int TDEE { get; set; }
 
-         List<Meats> prefferedMeats { get; set; } 
+         List<IMeal> prefferedMeals { get; set; }
+         List<IProduct> PrefferedProducts { get; set; }
     }
 }

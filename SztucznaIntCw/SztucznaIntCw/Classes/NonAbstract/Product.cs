@@ -28,6 +28,8 @@ namespace SztucznaIntCw.Classes.NonAbstract
 
         public bool IncludeInDiet { get; set; }
 
+        public Product() { }
+
         public Product(products product)
         {
             try

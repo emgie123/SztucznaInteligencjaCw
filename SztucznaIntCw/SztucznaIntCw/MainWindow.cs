@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using SztucznaIntCw.Classes;
 using SztucznaIntCw.Classes.Interfaces;
+using SztucznaIntCw.Classes.NonAbstract;
 using SztucznaIntCw.DBModel;
 using SztucznaIntCw.Enums;
 using SztucznaIntCw.Utilities;
@@ -16,6 +17,8 @@ namespace SztucznaIntCw
     {
 
         private TypeOfProvidedData providedDataType;
+        public Person SystemUser;
+        public static int QuestionCounter { get; set; }
 
         public MainWindow()
         {
@@ -25,6 +28,8 @@ namespace SztucznaIntCw
             EnableBasicData();
             weightTextBox.MaxLength = 3;
             heightTextBox.MaxLength = 3;
+
+            SystemUser = new Person();
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -126,17 +131,15 @@ namespace SztucznaIntCw
                 {
                     productsList = from c in dbConnection.products where c.id_category == category.id_category select c;
                     QuestionList.Add(new Question(category.id_category, category.nameCategory, productsList.ToList()));
-                    //QuestionList.Add(new Question(category.id_category, category.nameCategory, productsList));
-                }
+                 }
             }
-            QuestionWindow questionWindow = new QuestionWindow(QuestionList[0]);
-            questionWindow.Show();
+
+            QuestionWindow questionWindow = new QuestionWindow(QuestionList[0], SystemUser);
+            questionWindow.ShowDialog();
+            
+            
         }
 
-        private void weightTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
     }
