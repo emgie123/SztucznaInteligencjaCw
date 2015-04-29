@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.NextCategory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -59,11 +60,21 @@
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
+            // NextCategory
+            // 
+            this.NextCategory.Location = new System.Drawing.Point(314, 329);
+            this.NextCategory.Name = "NextCategory";
+            this.NextCategory.Size = new System.Drawing.Size(114, 37);
+            this.NextCategory.TabIndex = 3;
+            this.NextCategory.Text = "Następna kategoria";
+            this.NextCategory.UseVisualStyleBackColor = true;
+            // 
             // QuestionWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 378);
+            this.Controls.Add(this.NextCategory);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -79,5 +90,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button NextCategory;
     }
 }

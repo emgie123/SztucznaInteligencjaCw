@@ -8,7 +8,13 @@ namespace SztucznaIntCw.Classes.Interfaces
 {
     public interface IProduct
     {
-        string Name { get; }
+        string Name { get; set; }
+        float Protein { get; set; }
+        float Carbs { get; set; }
+        float Fat { get; set; }
+        float Kcal { get; set; }
+        string CategoryName { get; set; }
+        int Rating { get; set; }
         //  Narazie więcej nie uzupełniałem bo zależy co będzie w modelu klasy siedziało
     }
 }

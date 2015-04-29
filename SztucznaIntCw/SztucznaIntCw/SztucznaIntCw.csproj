@@ -74,6 +74,7 @@
     <Compile Include="Classes\NonAbstract\Meals\MorningMeal.cs" />
     <Compile Include="Classes\NonAbstract\Meals\NoonMeal.cs" />
     <Compile Include="Classes\NonAbstract\Person.cs" />
+    <Compile Include="Classes\NonAbstract\Product.cs" />
     <Compile Include="DBModel\categories.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -116,6 +117,7 @@
     <Compile Include="QuestionWindow.Designer.cs">
       <DependentUpon>QuestionWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Question.cs" />
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

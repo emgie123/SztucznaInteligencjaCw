@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Windows.Forms;
 using SztucznaIntCw.Classes;
 using SztucznaIntCw.Classes.Interfaces;
+using SztucznaIntCw.DBModel;
 using SztucznaIntCw.Enums;
+using SztucznaIntCw.Utilities;
 
 namespace SztucznaIntCw
 {
@@ -104,6 +110,21 @@ namespace SztucznaIntCw
 
         private void GeneratePersonalizedDiet_Click(object sender, EventArgs e)
         {
+            List<Question> QuestionList = new List<Question>();
+            IEnumerable<categories> categoriesList;
+            IEnumerable<products> productsList;
+
+            using (var dbConnection = new Entities())
+            {
+                categoriesList = from b in dbConnection.categories select b;
+
+                foreach (var category in categoriesList)
+                {
+                    productsList = from c in dbConnection.products where c.id_category == category.id_category select c;
+                    QuestionList.Add(new Question(category.id_category, category.nameCategory, productsList.ToList()));
+                    //QuestionList.Add(new Question(category.id_category, category.nameCategory, productsList));
+                }
+            }
             QuestionWindow questionWindow = new QuestionWindow();
             questionWindow.Show();
         }

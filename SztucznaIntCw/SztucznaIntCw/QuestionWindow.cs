@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SztucznaIntCw.Utilities;
 
 namespace SztucznaIntCw
 {
@@ -14,6 +15,14 @@ namespace SztucznaIntCw
     {
         public QuestionWindow()
         {
+            InitializeComponent();
+        }
+
+        public QuestionWindow(Question question)
+        {
+            this.richTextBox1.Text = question.Content;
+            this.label2.Text = question.Number.ToString();
+
             InitializeComponent();
         }
 
