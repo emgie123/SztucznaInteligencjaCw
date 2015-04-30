@@ -118,23 +118,22 @@ namespace SztucznaIntCw
             List<Question> QuestionList = new List<Question>();
             IEnumerable<categories> categoriesList;
             IEnumerable<products> productsList;
+            IEnumerable<meals> mealsConsumptionTime;
 
             using (var dbConnection = new Entities())
             {
                 categoriesList = (from b in dbConnection.categories select b).ToList();
-                
+                productsList = (from c in dbConnection.products select c).ToList();
+                mealsConsumptionTime = (from d in dbConnection.meals select d).ToList();
+            }
+    
+            foreach (var category in categoriesList)
+            {
+                var currentCategoryProducts = from c in productsList where c.id_category == category.id_category select c;
+                QuestionList.Add(new Question(category.id_category, category.nameCategory, currentCategoryProducts.ToList()));
             }
 
-            using (var dbConnection = new Entities())
-            {      
-                foreach (var category in categoriesList)
-                {
-                    productsList = from c in dbConnection.products where c.id_category == category.id_category select c;
-                    QuestionList.Add(new Question(category.id_category, category.nameCategory, productsList.ToList()));
-                 }
-            }
-
-            QuestionWindow questionWindow = new QuestionWindow(QuestionList, SystemUser)
+            QuestionWindow questionWindow = new QuestionWindow(QuestionList, SystemUser, mealsConsumptionTime.ToList())
             {
                 StartPosition = FormStartPosition.CenterParent
             };
