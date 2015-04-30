@@ -21,7 +21,7 @@ namespace SztucznaIntCw.DBModel
     
         public int id_product { get; set; }
         public Nullable<int> id_category { get; set; }
-        public string nameProduct { get; set; }
+        public string name_product { get; set; }
         public Nullable<float> protein { get; set; }
         public Nullable<float> fat { get; set; }
         public Nullable<float> carbs { get; set; }

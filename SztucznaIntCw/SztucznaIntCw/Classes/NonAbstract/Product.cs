@@ -41,7 +41,7 @@ namespace SztucznaIntCw.Classes.NonAbstract
                 Carbs = product.carbs.Value;
                 Fat = product.fat.Value;
                 Kcal = product.kcal.Value;
-                Name = product.nameProduct;
+                Name = product.name_product;
                 MacroElement = (Fat > Protein && Fat > Carbs)
                     ? MainSourceOf.Fat
                     : (Carbs > Fat && Carbs > Protein)

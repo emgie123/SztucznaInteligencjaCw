@@ -18,11 +18,11 @@
           </Key>
           <Property Name="id_meal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_product" Type="int" />
-          <Property Name="breakfast" Type="bool" Nullable="false" />
-          <Property Name="2breakfast" Type="bool" Nullable="false" />
-          <Property Name="lunch" Type="bool" Nullable="false" />
-          <Property Name="afternoonSnack" Type="bool" Nullable="false" />
-          <Property Name="dinner" Type="bool" Nullable="false" />
+          <Property Name="first_meal" Type="bool" Nullable="false" />
+          <Property Name="second_meal" Type="bool" Nullable="false" />
+          <Property Name="third_meal" Type="bool" Nullable="false" />
+          <Property Name="fourth_meal" Type="bool" Nullable="false" />
+          <Property Name="fifth_meal" Type="bool" Nullable="false" />
         </EntityType>
         <EntityType Name="products">
           <Key>
@@ -30,7 +30,7 @@
           </Key>
           <Property Name="id_product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_category" Type="int" />
-          <Property Name="nameProduct" Type="varchar" MaxLength="128" />
+          <Property Name="name_product" Type="varchar" MaxLength="128" />
           <Property Name="protein" Type="float" />
           <Property Name="fat" Type="float" />
           <Property Name="carbs" Type="float" />
@@ -92,11 +92,11 @@
           </Key>
           <Property Name="id_meal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_product" Type="Int32" />
-          <Property Name="breakfast" Type="Boolean" Nullable="false" />
-          <Property Name="C2breakfast" Type="Boolean" Nullable="false" />
-          <Property Name="lunch" Type="Boolean" Nullable="false" />
-          <Property Name="afternoonSnack" Type="Boolean" Nullable="false" />
-          <Property Name="dinner" Type="Boolean" Nullable="false" />
+          <Property Name="first_meal" Type="Boolean" Nullable="false" />
+          <Property Name="second_meal" Type="Boolean" Nullable="false" />
+          <Property Name="third_meal" Type="Boolean" Nullable="false" />
+          <Property Name="fourth_meal" Type="Boolean" Nullable="false" />
+          <Property Name="fifth_meal" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="products" Relationship="Self.meals_ibfk_1" FromRole="meals" ToRole="products" />
         </EntityType>
         <EntityType Name="products">
@@ -105,7 +105,7 @@
           </Key>
           <Property Name="id_product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_category" Type="Int32" />
-          <Property Name="nameProduct" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="name_product" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="protein" Type="Single" />
           <Property Name="fat" Type="Single" />
           <Property Name="carbs" Type="Single" />
@@ -169,11 +169,11 @@
               <MappingFragment StoreEntitySet="meals">
                 <ScalarProperty Name="id_meal" ColumnName="id_meal" />
                 <ScalarProperty Name="id_product" ColumnName="id_product" />
-                <ScalarProperty Name="breakfast" ColumnName="breakfast" />
-                <ScalarProperty Name="C2breakfast" ColumnName="2breakfast" />
-                <ScalarProperty Name="lunch" ColumnName="lunch" />
-                <ScalarProperty Name="afternoonSnack" ColumnName="afternoonSnack" />
-                <ScalarProperty Name="dinner" ColumnName="dinner" />
+                <ScalarProperty Name="first_meal" ColumnName="first_meal" />
+                <ScalarProperty Name="second_meal" ColumnName="second_meal" />
+                <ScalarProperty Name="third_meal" ColumnName="third_meal" />
+                <ScalarProperty Name="fourth_meal" ColumnName="fourth_meal" />
+                <ScalarProperty Name="fifth_meal" ColumnName="fifth_meal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -182,7 +182,7 @@
               <MappingFragment StoreEntitySet="products">
                 <ScalarProperty Name="id_product" ColumnName="id_product" />
                 <ScalarProperty Name="id_category" ColumnName="id_category" />
-                <ScalarProperty Name="nameProduct" ColumnName="nameProduct" />
+                <ScalarProperty Name="name_product" ColumnName="name_product" />
                 <ScalarProperty Name="protein" ColumnName="protein" />
                 <ScalarProperty Name="fat" ColumnName="fat" />
                 <ScalarProperty Name="carbs" ColumnName="carbs" />

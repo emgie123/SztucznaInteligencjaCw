@@ -16,11 +16,11 @@ namespace SztucznaIntCw.DBModel
     {
         public int id_meal { get; set; }
         public Nullable<int> id_product { get; set; }
-        public bool breakfast { get; set; }
-        public bool C2breakfast { get; set; }
-        public bool lunch { get; set; }
-        public bool afternoonSnack { get; set; }
-        public bool dinner { get; set; }
+        public bool first_meal { get; set; }
+        public bool second_meal { get; set; }
+        public bool third_meal { get; set; }
+        public bool fourth_meal { get; set; }
+        public bool fifth_meal { get; set; }
     
         public virtual products products { get; set; }
     }
