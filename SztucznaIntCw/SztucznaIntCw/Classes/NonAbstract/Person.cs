@@ -17,11 +17,15 @@ namespace SztucznaIntCw.Classes.NonAbstract
 
         public float Height { get; set; }
 
+        public TypeOfGender Gender { get; set; }
+
         public TypeOfActivity TypeOfActivity { get; set; }
 
         public TypeOfPhysique TypeOfPhysique { get; set; }
 
-        public float BMI { get; set; }
+        public int Age { get; set; }
+
+        public decimal BMI { get; set; }
 
         public Diet diet { get; set; }
 

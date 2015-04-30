@@ -2,6 +2,6 @@
 {
     interface ICalculator
     {
-        IPerson GetKcalValue(IPerson person);
+        void GetKcalValue(IPerson person);
     }
 }

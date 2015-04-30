@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
-using SztucznaIntCw.Classes;
 using SztucznaIntCw.Classes.Interfaces;
 using SztucznaIntCw.Classes.NonAbstract;
+using SztucznaIntCw.Classes.NonAbstract.CalculatorDirectory;
 using SztucznaIntCw.DBModel;
 using SztucznaIntCw.Enums;
 using SztucznaIntCw.Utilities;
@@ -23,27 +21,19 @@ namespace SztucznaIntCw
         public MainWindow()
         {
             InitializeComponent();
-            genderTextBox.MaxLength = 1;
+      
             simpleDataRadioButton.Checked = true;
             EnableBasicData();
+
+            genderTextBox.MaxLength = 1;
             weightTextBox.MaxLength = 3;
             heightTextBox.MaxLength = 3;
+            ageTextBox.MaxLength = 3;
 
             SystemUser = new Person();
             QuestionCounter = 0;
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void genderTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!(genderTextBox.Text != string.Empty && e.KeyCode == Keys.Enter)) return;
-
-            if (providedDataType != TypeOfProvidedData.Detail) return;
-        }
 
         private void genderTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -75,9 +65,21 @@ namespace SztucznaIntCw
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
-           // ICalculator calc = new 
-  
-           // neededKcalLabel.Text = @"Twoje zapotrzebowanie wynosi 1943 kcal, BMI: 20.3";
+            ICalculator calc;
+
+            if (detailsDataRadioButton.Checked)
+            {
+                calc = new DetailCalculator();
+            }
+            else
+            {
+                calc = new BasicCalculator();
+            }
+
+
+            calc.GetKcalValue(SystemUser);
+
+            // neededKcalLabel.Text = @"Twoje zapotrzebowanie wynosi 1943 kcal, BMI: 20.3";
 
         }
 
@@ -92,19 +94,15 @@ namespace SztucznaIntCw
             EnableDetailsData();
         }
 
-        private void genderTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void weightTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {//48-57
-            e.Handled = (e.KeyChar<48 || e.KeyChar>57);
+            e.Handled = (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != (char)Keys.Back;
         }
 
         private void heightTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = (e.KeyChar < 48 || e.KeyChar > 57);
+            e.Handled = (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != (char)Keys.Back;
         }
 
         private void GenerateDefaultDiet_Click(object sender, EventArgs e)
@@ -142,6 +140,11 @@ namespace SztucznaIntCw
             questionWindow.ShowDialog();
             
             
+        }
+
+        private void ageTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != (char)Keys.Back;
         }
 
 

@@ -66,8 +66,8 @@
     <Compile Include="Classes\Interfaces\IMeal.cs" />
     <Compile Include="Classes\Interfaces\IPerson.cs" />
     <Compile Include="Classes\Interfaces\IProduct.cs" />
-    <Compile Include="Classes\NonAbstract\Calculator\BasicCalculator.cs" />
-    <Compile Include="Classes\NonAbstract\Calculator\DetailCalculator.cs" />
+    <Compile Include="Classes\NonAbstract\CalculatorDirectory\BasicCalculator.cs" />
+    <Compile Include="Classes\NonAbstract\CalculatorDirectory\DetailCalculator.cs" />
     <Compile Include="Classes\NonAbstract\Meals\AfternoonMeal.cs" />
     <Compile Include="Classes\NonAbstract\Meals\EveningMeal.cs" />
     <Compile Include="Classes\NonAbstract\Meals\ForenoonMeal.cs" />
@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Enums\Food\Meats.cs" />
     <Compile Include="Enums\TypeOfActivity.cs" />
+    <Compile Include="Enums\TypeOfGender.cs" />
     <Compile Include="Enums\TypeOfPhysique.cs" />
     <Compile Include="Enums\TypeOfProvidedData.cs" />
     <Compile Include="MainWindow.cs">

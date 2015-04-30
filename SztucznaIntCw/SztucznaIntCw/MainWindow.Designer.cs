@@ -31,9 +31,6 @@
             this.dataGroupBox = new System.Windows.Forms.GroupBox();
             this.calculateButton = new System.Windows.Forms.Button();
             this.activityGroupBox = new System.Windows.Forms.GroupBox();
-            this.activityHighRadioButton = new System.Windows.Forms.RadioButton();
-            this.activityMediumRadioButton = new System.Windows.Forms.RadioButton();
-            this.activitySmallRadioButton = new System.Windows.Forms.RadioButton();
             this.physiqueGroupBox = new System.Windows.Forms.GroupBox();
             this.endoRadioButton = new System.Windows.Forms.RadioButton();
             this.mezoRadioButton = new System.Windows.Forms.RadioButton();
@@ -51,10 +48,16 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.GeneratePersonalizedDiet = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.reduceWeightRadioButton = new System.Windows.Forms.RadioButton();
+            this.increaseWeightRadioButton = new System.Windows.Forms.RadioButton();
+            this.leaveCurrentWeightRadioButton = new System.Windows.Forms.RadioButton();
             this.GenerateDefaultDiet = new System.Windows.Forms.Button();
+            this.ageLabel = new System.Windows.Forms.Label();
+            this.ageTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGroupBox.SuspendLayout();
             this.activityGroupBox.SuspendLayout();
             this.physiqueGroupBox.SuspendLayout();
@@ -65,6 +68,8 @@
             // 
             // dataGroupBox
             // 
+            this.dataGroupBox.Controls.Add(this.ageTextBox);
+            this.dataGroupBox.Controls.Add(this.ageLabel);
             this.dataGroupBox.Controls.Add(this.calculateButton);
             this.dataGroupBox.Controls.Add(this.activityGroupBox);
             this.dataGroupBox.Controls.Add(this.physiqueGroupBox);
@@ -74,16 +79,16 @@
             this.dataGroupBox.Controls.Add(this.weightLabel);
             this.dataGroupBox.Controls.Add(this.genderTextBox);
             this.dataGroupBox.Controls.Add(this.genderLabel);
-            this.dataGroupBox.Location = new System.Drawing.Point(12, 99);
+            this.dataGroupBox.Location = new System.Drawing.Point(12, 65);
             this.dataGroupBox.Name = "dataGroupBox";
-            this.dataGroupBox.Size = new System.Drawing.Size(296, 264);
+            this.dataGroupBox.Size = new System.Drawing.Size(296, 325);
             this.dataGroupBox.TabIndex = 0;
             this.dataGroupBox.TabStop = false;
             this.dataGroupBox.Text = "Dane";
             // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(215, 235);
+            this.calculateButton.Location = new System.Drawing.Point(211, 291);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(75, 23);
             this.calculateButton.TabIndex = 3;
@@ -93,55 +98,23 @@
             // 
             // activityGroupBox
             // 
-            this.activityGroupBox.Controls.Add(this.activityHighRadioButton);
-            this.activityGroupBox.Controls.Add(this.activityMediumRadioButton);
-            this.activityGroupBox.Controls.Add(this.activitySmallRadioButton);
-            this.activityGroupBox.Location = new System.Drawing.Point(6, 171);
+            this.activityGroupBox.Controls.Add(this.textBox2);
+            this.activityGroupBox.Controls.Add(this.textBox1);
+            this.activityGroupBox.Controls.Add(this.label2);
+            this.activityGroupBox.Controls.Add(this.label1);
+            this.activityGroupBox.Location = new System.Drawing.Point(6, 211);
             this.activityGroupBox.Name = "activityGroupBox";
-            this.activityGroupBox.Size = new System.Drawing.Size(284, 52);
+            this.activityGroupBox.Size = new System.Drawing.Size(284, 74);
             this.activityGroupBox.TabIndex = 8;
             this.activityGroupBox.TabStop = false;
             this.activityGroupBox.Text = "Aktywność fizyczna";
-            // 
-            // activityHighRadioButton
-            // 
-            this.activityHighRadioButton.AutoSize = true;
-            this.activityHighRadioButton.Location = new System.Drawing.Point(173, 20);
-            this.activityHighRadioButton.Name = "activityHighRadioButton";
-            this.activityHighRadioButton.Size = new System.Drawing.Size(50, 17);
-            this.activityHighRadioButton.TabIndex = 2;
-            this.activityHighRadioButton.TabStop = true;
-            this.activityHighRadioButton.Text = "Duża";
-            this.activityHighRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // activityMediumRadioButton
-            // 
-            this.activityMediumRadioButton.AutoSize = true;
-            this.activityMediumRadioButton.Location = new System.Drawing.Point(88, 20);
-            this.activityMediumRadioButton.Name = "activityMediumRadioButton";
-            this.activityMediumRadioButton.Size = new System.Drawing.Size(61, 17);
-            this.activityMediumRadioButton.TabIndex = 1;
-            this.activityMediumRadioButton.TabStop = true;
-            this.activityMediumRadioButton.Text = "Średnia";
-            this.activityMediumRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // activitySmallRadioButton
-            // 
-            this.activitySmallRadioButton.AutoSize = true;
-            this.activitySmallRadioButton.Location = new System.Drawing.Point(7, 20);
-            this.activitySmallRadioButton.Name = "activitySmallRadioButton";
-            this.activitySmallRadioButton.Size = new System.Drawing.Size(50, 17);
-            this.activitySmallRadioButton.TabIndex = 0;
-            this.activitySmallRadioButton.TabStop = true;
-            this.activitySmallRadioButton.Text = "Mała";
-            this.activitySmallRadioButton.UseVisualStyleBackColor = true;
             // 
             // physiqueGroupBox
             // 
             this.physiqueGroupBox.Controls.Add(this.endoRadioButton);
             this.physiqueGroupBox.Controls.Add(this.mezoRadioButton);
             this.physiqueGroupBox.Controls.Add(this.ektoRadioButton);
-            this.physiqueGroupBox.Location = new System.Drawing.Point(6, 113);
+            this.physiqueGroupBox.Location = new System.Drawing.Point(6, 153);
             this.physiqueGroupBox.Name = "physiqueGroupBox";
             this.physiqueGroupBox.Size = new System.Drawing.Size(284, 52);
             this.physiqueGroupBox.TabIndex = 7;
@@ -221,8 +194,6 @@
             this.genderTextBox.Name = "genderTextBox";
             this.genderTextBox.Size = new System.Drawing.Size(100, 20);
             this.genderTextBox.TabIndex = 1;
-            this.genderTextBox.TextChanged += new System.EventHandler(this.genderTextBox_TextChanged);
-            this.genderTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.genderTextBox_KeyDown);
             this.genderTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.genderTextBox_KeyPress);
             // 
             // genderLabel
@@ -240,16 +211,15 @@
             this.inputDataTypeGroupBox.Controls.Add(this.detailsDataRadioButton);
             this.inputDataTypeGroupBox.Location = new System.Drawing.Point(12, 13);
             this.inputDataTypeGroupBox.Name = "inputDataTypeGroupBox";
-            this.inputDataTypeGroupBox.Size = new System.Drawing.Size(296, 80);
+            this.inputDataTypeGroupBox.Size = new System.Drawing.Size(296, 46);
             this.inputDataTypeGroupBox.TabIndex = 1;
             this.inputDataTypeGroupBox.TabStop = false;
             this.inputDataTypeGroupBox.Text = "Czy chcesz podać szczegółowe dane?";
-            this.inputDataTypeGroupBox.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // simpleDataRadioButton
             // 
             this.simpleDataRadioButton.AutoSize = true;
-            this.simpleDataRadioButton.Location = new System.Drawing.Point(7, 43);
+            this.simpleDataRadioButton.Location = new System.Drawing.Point(57, 20);
             this.simpleDataRadioButton.Name = "simpleDataRadioButton";
             this.simpleDataRadioButton.Size = new System.Drawing.Size(41, 17);
             this.simpleDataRadioButton.TabIndex = 1;
@@ -284,7 +254,7 @@
             this.groupBox1.Controls.Add(this.GeneratePersonalizedDiet);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.GenerateDefaultDiet);
-            this.groupBox1.Location = new System.Drawing.Point(13, 370);
+            this.groupBox1.Location = new System.Drawing.Point(12, 442);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(295, 196);
             this.groupBox1.TabIndex = 3;
@@ -303,9 +273,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.reduceWeightRadioButton);
+            this.groupBox2.Controls.Add(this.increaseWeightRadioButton);
+            this.groupBox2.Controls.Add(this.leaveCurrentWeightRadioButton);
             this.groupBox2.Location = new System.Drawing.Point(12, 24);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(277, 95);
@@ -313,38 +283,38 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Typ generowanej diety";
             // 
-            // radioButton3
+            // reduceWeightRadioButton
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(15, 65);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(138, 17);
-            this.radioButton3.TabIndex = 8;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Redukująca masę ciała";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.reduceWeightRadioButton.AutoSize = true;
+            this.reduceWeightRadioButton.Location = new System.Drawing.Point(15, 65);
+            this.reduceWeightRadioButton.Name = "reduceWeightRadioButton";
+            this.reduceWeightRadioButton.Size = new System.Drawing.Size(138, 17);
+            this.reduceWeightRadioButton.TabIndex = 8;
+            this.reduceWeightRadioButton.TabStop = true;
+            this.reduceWeightRadioButton.Text = "Redukująca masę ciała";
+            this.reduceWeightRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // increaseWeightRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(15, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(145, 17);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Zwiększająca masę ciała";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.increaseWeightRadioButton.AutoSize = true;
+            this.increaseWeightRadioButton.Location = new System.Drawing.Point(15, 19);
+            this.increaseWeightRadioButton.Name = "increaseWeightRadioButton";
+            this.increaseWeightRadioButton.Size = new System.Drawing.Size(145, 17);
+            this.increaseWeightRadioButton.TabIndex = 6;
+            this.increaseWeightRadioButton.TabStop = true;
+            this.increaseWeightRadioButton.Text = "Zwiększająca masę ciała";
+            this.increaseWeightRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // leaveCurrentWeightRadioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(15, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(117, 17);
-            this.radioButton2.TabIndex = 7;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Na utrzymanie wagi";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.leaveCurrentWeightRadioButton.AutoSize = true;
+            this.leaveCurrentWeightRadioButton.Location = new System.Drawing.Point(15, 42);
+            this.leaveCurrentWeightRadioButton.Name = "leaveCurrentWeightRadioButton";
+            this.leaveCurrentWeightRadioButton.Size = new System.Drawing.Size(117, 17);
+            this.leaveCurrentWeightRadioButton.TabIndex = 7;
+            this.leaveCurrentWeightRadioButton.TabStop = true;
+            this.leaveCurrentWeightRadioButton.Text = "Na utrzymanie wagi";
+            this.leaveCurrentWeightRadioButton.UseVisualStyleBackColor = true;
             // 
             // GenerateDefaultDiet
             // 
@@ -356,11 +326,60 @@
             this.GenerateDefaultDiet.UseVisualStyleBackColor = true;
             this.GenerateDefaultDiet.Click += new System.EventHandler(this.GenerateDefaultDiet_Click);
             // 
+            // ageLabel
+            // 
+            this.ageLabel.AutoSize = true;
+            this.ageLabel.Location = new System.Drawing.Point(7, 105);
+            this.ageLabel.Name = "ageLabel";
+            this.ageLabel.Size = new System.Drawing.Size(58, 13);
+            this.ageLabel.TabIndex = 9;
+            this.ageLabel.Text = "Wiek [lata]";
+            // 
+            // ageTextBox
+            // 
+            this.ageTextBox.Location = new System.Drawing.Point(190, 105);
+            this.ageTextBox.Name = "ageTextBox";
+            this.ageTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ageTextBox.TabIndex = 10;
+            this.ageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ageTextBox_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Trening siłowy [min]";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Trening aerobowy [min]";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(178, 22);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 11;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(178, 48);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 13;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 578);
+            this.ClientSize = new System.Drawing.Size(737, 650);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.neededKcalLabel);
             this.Controls.Add(this.inputDataTypeGroupBox);
@@ -392,9 +411,6 @@
         public System.Windows.Forms.Label genderLabel;
         public System.Windows.Forms.Label neededKcalLabel;
         public System.Windows.Forms.GroupBox activityGroupBox;
-        public System.Windows.Forms.RadioButton activityHighRadioButton;
-        public System.Windows.Forms.RadioButton activityMediumRadioButton;
-        public System.Windows.Forms.RadioButton activitySmallRadioButton;
         public System.Windows.Forms.GroupBox physiqueGroupBox;
         public System.Windows.Forms.RadioButton endoRadioButton;
         public System.Windows.Forms.RadioButton mezoRadioButton;
@@ -408,10 +424,16 @@
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Button GeneratePersonalizedDiet;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton reduceWeightRadioButton;
+        private System.Windows.Forms.RadioButton increaseWeightRadioButton;
+        private System.Windows.Forms.RadioButton leaveCurrentWeightRadioButton;
         public System.Windows.Forms.Button GenerateDefaultDiet;
+        public System.Windows.Forms.TextBox ageTextBox;
+        public System.Windows.Forms.Label ageLabel;
+        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label1;
 
     }
 }
