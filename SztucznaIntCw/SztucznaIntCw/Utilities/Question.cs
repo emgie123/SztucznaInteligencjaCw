@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SztucznaIntCw.Classes.NonAbstract;
 using SztucznaIntCw.DBModel;
+using SztucznaIntCw.Enums;
 
 namespace SztucznaIntCw.Utilities
 {
@@ -29,7 +30,10 @@ namespace SztucznaIntCw.Utilities
             
             foreach (var product in products)
             {
-                Products.Add(new Product(product) {CategoryName = category});
+                Products.Add(new Product(product)
+                {
+                    CategoryName = category,
+                });
             }
 
             Content = string.Format(questionTemplate, category.ToUpper());

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SztucznaIntCw.Classes.Interfaces;
 using SztucznaIntCw.DBModel;
+using SztucznaIntCw.Enums;
 
 namespace SztucznaIntCw.Classes.NonAbstract
 {
@@ -28,6 +29,8 @@ namespace SztucznaIntCw.Classes.NonAbstract
 
         public bool IncludeInDiet { get; set; }
 
+        public MainSourceOf MacroElement { get; set; }
+
         public Product() { }
 
         public Product(products product)
@@ -39,14 +42,16 @@ namespace SztucznaIntCw.Classes.NonAbstract
                 Fat = product.fat.Value;
                 Kcal = product.kcal.Value;
                 Name = product.nameProduct;
+                MacroElement = (Fat > Protein && Fat > Carbs)
+                    ? MainSourceOf.Fat
+                    : (Carbs > Fat && Carbs > Protein)
+                        ? MainSourceOf.Carbs
+                        : (Protein > Fat && Protein > Carbs) ? MainSourceOf.Protein : MainSourceOf.Everything;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Jedno z przekazanych pól tabeli przechowuje wartość null: {0}", ex);
             }
         }
-
-
-        
     }
 }
