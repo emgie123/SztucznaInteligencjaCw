@@ -99,6 +99,7 @@
     <Compile Include="DBModel\products.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enums\MainSourceOf.cs" />
     <Compile Include="Enums\Food\Meats.cs" />
     <Compile Include="Enums\TypeOfActivity.cs" />
     <Compile Include="Enums\TypeOfPhysique.cs" />

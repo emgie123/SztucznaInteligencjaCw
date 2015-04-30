@@ -54,7 +54,7 @@ namespace SztucznaIntCw
                     Text = product.Name}, new TextBox(){Location = new Point(xCoordinate + 200, yCoordinate), MaxLength = 2, Text = "50"});
                 categorySelect.Add(new CheckBox() { Location = new Point(xCoordinate + 320, yCoordinate), Checked = true });
 
-                categoryValue.Values.Last().KeyPress += (sender, e) => e.Handled = (e.KeyChar < 8 || (e.KeyChar > 8 && e.KeyChar < 48) || (e.KeyChar > 57));
+                categoryValue.Values.Last().KeyPress += (sender, e) => e.Handled = ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != (char)Keys.Back);
                 yCoordinate += 25;
 
                 //this.panel1.MaximumSize = new Size(415, 201); Nie wiem czemu ale to nie działa (chciałbym wywalić poziomy scroll).
@@ -77,20 +77,13 @@ namespace SztucznaIntCw
                     categorySelectCounter++;
                     continue;
                 }
-                //  Mała uwaga dot. przyjętej koncepcji. Ogólnie z obiektu Question przekazuję listę produktów w konstruktorze i przekazuję tą referencję
-                //  do zmiennej injectedList. Następnie w obsłudze buttona Next sprawdzam, czy user wybrał dany produkt do definiowania diety.
-                //  Jeśli nie to po prostu usuwam dany produkt z wstrzykniętej listy. Jest jeszcze inna opcja bo dodałem typowi Product pole IncludeInDiet,
-                //  które obecnie nie jest używane (nie wiem może jednak skorzystamy z niego i przyjmiemy inną koncepcję - trzeba przedyskutować).
-                //  Jeśli nie bd z niego korzystali to się zrobi mały refactoring. :D
-                
-                //injectedProducts[categorySelectCounter].Rating = int.Parse(categoryItem.Value.Text);
-
 
                 systemUser.PrefferedProducts.Add(new Product()
                 {
                     Carbs = injectedProducts[categorySelectCounter].Carbs,
                     Protein = injectedProducts[categorySelectCounter].Protein,
                     CategoryName = injectedProducts[categorySelectCounter].CategoryName,
+                    MacroElement = injectedProducts[categorySelectCounter].MacroElement,
                     Fat = injectedProducts[categorySelectCounter].Fat,
                     Kcal = injectedProducts[categorySelectCounter].Kcal,
                     Name = injectedProducts[categorySelectCounter].Name,
