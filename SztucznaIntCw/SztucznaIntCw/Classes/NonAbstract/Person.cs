@@ -30,8 +30,11 @@ namespace SztucznaIntCw.Classes.NonAbstract
         public Diet diet { get; set; }
 
         public int TDEE { get; set; }
+        public int WeeklyStrenghtActivity { get; set; }
+        public int WeeklyAeroActivity { get; set; }
+  
 
-        public List<IMeal> prefferedMeals { get; set; }
+        public List<IMeal> Meals { get; set; }
 
         public List<IProduct> PrefferedProducts { get; set; }
     }

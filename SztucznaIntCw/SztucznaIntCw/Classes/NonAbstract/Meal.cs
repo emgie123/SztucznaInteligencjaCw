@@ -8,11 +8,13 @@ namespace SztucznaIntCw.Classes.NonAbstract
         public int GramsOfProteins { get; set; }
         public int GramsOfFats { get; set; }
         public int GramsOfCarbs { get; set; }
-        public List<IProduct> ProductList { get; protected set; }
 
-        public Meal(List<IProduct> list)
+        public List<IProduct> ProductList { get;  set; }
+
+        public Meal()
         {
-            ProductList = list;
+            ProductList = new List<IProduct>();
         }
+
     }
 }

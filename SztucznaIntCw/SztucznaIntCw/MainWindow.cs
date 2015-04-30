@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using SztucznaIntCw.Classes;
 using SztucznaIntCw.Classes.Interfaces;
 using SztucznaIntCw.Classes.NonAbstract;
 using SztucznaIntCw.Classes.NonAbstract.CalculatorDirectory;
@@ -138,14 +139,29 @@ namespace SztucznaIntCw
                 StartPosition = FormStartPosition.CenterParent
             };
             questionWindow.ShowDialog();
-            
-            
+
+            Diet personalDiet = new Diet();
+            personalDiet._choosenProducts = SystemUser.PrefferedProducts;
+            personalDiet.Meals = new Dictionary<int, IMeal>();
+
+
         }
 
         private void ageTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != (char)Keys.Back;
         }
+
+        private void aeroActivityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void strenghtActivityTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
 
 
 

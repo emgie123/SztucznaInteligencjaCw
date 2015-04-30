@@ -29,8 +29,14 @@
         private void InitializeComponent()
         {
             this.dataGroupBox = new System.Windows.Forms.GroupBox();
+            this.ageTextBox = new System.Windows.Forms.TextBox();
+            this.ageLabel = new System.Windows.Forms.Label();
             this.calculateButton = new System.Windows.Forms.Button();
             this.activityGroupBox = new System.Windows.Forms.GroupBox();
+            this.aeroActivityTextBox = new System.Windows.Forms.TextBox();
+            this.strenghtActivityTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.physiqueGroupBox = new System.Windows.Forms.GroupBox();
             this.endoRadioButton = new System.Windows.Forms.RadioButton();
             this.mezoRadioButton = new System.Windows.Forms.RadioButton();
@@ -52,12 +58,6 @@
             this.increaseWeightRadioButton = new System.Windows.Forms.RadioButton();
             this.leaveCurrentWeightRadioButton = new System.Windows.Forms.RadioButton();
             this.GenerateDefaultDiet = new System.Windows.Forms.Button();
-            this.ageLabel = new System.Windows.Forms.Label();
-            this.ageTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGroupBox.SuspendLayout();
             this.activityGroupBox.SuspendLayout();
             this.physiqueGroupBox.SuspendLayout();
@@ -81,14 +81,31 @@
             this.dataGroupBox.Controls.Add(this.genderLabel);
             this.dataGroupBox.Location = new System.Drawing.Point(12, 65);
             this.dataGroupBox.Name = "dataGroupBox";
-            this.dataGroupBox.Size = new System.Drawing.Size(296, 325);
+            this.dataGroupBox.Size = new System.Drawing.Size(296, 342);
             this.dataGroupBox.TabIndex = 0;
             this.dataGroupBox.TabStop = false;
             this.dataGroupBox.Text = "Dane";
             // 
+            // ageTextBox
+            // 
+            this.ageTextBox.Location = new System.Drawing.Point(190, 105);
+            this.ageTextBox.Name = "ageTextBox";
+            this.ageTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ageTextBox.TabIndex = 10;
+            this.ageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ageTextBox_KeyPress);
+            // 
+            // ageLabel
+            // 
+            this.ageLabel.AutoSize = true;
+            this.ageLabel.Location = new System.Drawing.Point(7, 105);
+            this.ageLabel.Name = "ageLabel";
+            this.ageLabel.Size = new System.Drawing.Size(58, 13);
+            this.ageLabel.TabIndex = 9;
+            this.ageLabel.Text = "Wiek [lata]";
+            // 
             // calculateButton
             // 
-            this.calculateButton.Location = new System.Drawing.Point(211, 291);
+            this.calculateButton.Location = new System.Drawing.Point(211, 307);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(75, 23);
             this.calculateButton.TabIndex = 3;
@@ -98,16 +115,50 @@
             // 
             // activityGroupBox
             // 
-            this.activityGroupBox.Controls.Add(this.textBox2);
-            this.activityGroupBox.Controls.Add(this.textBox1);
+            this.activityGroupBox.Controls.Add(this.aeroActivityTextBox);
+            this.activityGroupBox.Controls.Add(this.strenghtActivityTextBox);
             this.activityGroupBox.Controls.Add(this.label2);
             this.activityGroupBox.Controls.Add(this.label1);
             this.activityGroupBox.Location = new System.Drawing.Point(6, 211);
             this.activityGroupBox.Name = "activityGroupBox";
-            this.activityGroupBox.Size = new System.Drawing.Size(284, 74);
+            this.activityGroupBox.Size = new System.Drawing.Size(284, 90);
             this.activityGroupBox.TabIndex = 8;
             this.activityGroupBox.TabStop = false;
-            this.activityGroupBox.Text = "Aktywność fizyczna";
+            this.activityGroupBox.Text = "Tygodniowa aktywność fizyczna";
+            // 
+            // aeroActivityTextBox
+            // 
+            this.aeroActivityTextBox.Location = new System.Drawing.Point(178, 51);
+            this.aeroActivityTextBox.Name = "aeroActivityTextBox";
+            this.aeroActivityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.aeroActivityTextBox.TabIndex = 13;
+            this.aeroActivityTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.aeroActivityTextBox_KeyPress);
+            // 
+            // strenghtActivityTextBox
+            // 
+            this.strenghtActivityTextBox.Location = new System.Drawing.Point(178, 25);
+            this.strenghtActivityTextBox.Name = "strenghtActivityTextBox";
+            this.strenghtActivityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.strenghtActivityTextBox.TabIndex = 11;
+            this.strenghtActivityTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.strenghtActivityTextBox_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Trening aerobowy [min]";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Trening siłowy [min]";
             // 
             // physiqueGroupBox
             // 
@@ -254,7 +305,7 @@
             this.groupBox1.Controls.Add(this.GeneratePersonalizedDiet);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.GenerateDefaultDiet);
-            this.groupBox1.Location = new System.Drawing.Point(12, 442);
+            this.groupBox1.Location = new System.Drawing.Point(327, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(295, 196);
             this.groupBox1.TabIndex = 3;
@@ -326,60 +377,11 @@
             this.GenerateDefaultDiet.UseVisualStyleBackColor = true;
             this.GenerateDefaultDiet.Click += new System.EventHandler(this.GenerateDefaultDiet_Click);
             // 
-            // ageLabel
-            // 
-            this.ageLabel.AutoSize = true;
-            this.ageLabel.Location = new System.Drawing.Point(7, 105);
-            this.ageLabel.Name = "ageLabel";
-            this.ageLabel.Size = new System.Drawing.Size(58, 13);
-            this.ageLabel.TabIndex = 9;
-            this.ageLabel.Text = "Wiek [lata]";
-            // 
-            // ageTextBox
-            // 
-            this.ageTextBox.Location = new System.Drawing.Point(190, 105);
-            this.ageTextBox.Name = "ageTextBox";
-            this.ageTextBox.Size = new System.Drawing.Size(100, 20);
-            this.ageTextBox.TabIndex = 10;
-            this.ageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ageTextBox_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Trening siłowy [min]";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Trening aerobowy [min]";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(178, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 11;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(178, 48);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 13;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 650);
+            this.ClientSize = new System.Drawing.Size(632, 432);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.neededKcalLabel);
             this.Controls.Add(this.inputDataTypeGroupBox);
@@ -430,8 +432,8 @@
         public System.Windows.Forms.Button GenerateDefaultDiet;
         public System.Windows.Forms.TextBox ageTextBox;
         public System.Windows.Forms.Label ageLabel;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox aeroActivityTextBox;
+        public System.Windows.Forms.TextBox strenghtActivityTextBox;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label1;
 
