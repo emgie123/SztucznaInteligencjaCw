@@ -140,9 +140,13 @@ namespace SztucznaIntCw
             };
             questionWindow.ShowDialog();
 
-            Diet personalDiet = new Diet();
-            personalDiet._choosenProducts = SystemUser.PrefferedProducts;
-            personalDiet.Meals = new Dictionary<int, IMeal>();
+
+            Dictionary<int,IMeal> mealsList = new Dictionary<int, IMeal>();
+            Diet personalDiet = new Diet
+            {
+                _choosenProducts = SystemUser.PrefferedProducts,
+                
+            };
 
 
         }
@@ -162,6 +166,12 @@ namespace SztucznaIntCw
 
         }
 
+        private Dictionary<int, IMeal> GetMealsDictionary()
+        {
+
+            //TODO meal dict
+            return null;
+        } 
 
 
 
