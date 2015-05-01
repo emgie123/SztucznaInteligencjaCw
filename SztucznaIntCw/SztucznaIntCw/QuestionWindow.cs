@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SztucznaIntCw.Classes.Interfaces;
 using SztucznaIntCw.Classes.NonAbstract;
+using SztucznaIntCw.DBModel;
+using SztucznaIntCw.Enums;
 using SztucznaIntCw.Utilities;
 
 namespace SztucznaIntCw
@@ -21,6 +23,8 @@ namespace SztucznaIntCw
         private List<Product> injectedProducts;
         private List<Question> questions;
         private Person systemUser;
+
+        private List<meals> injectedMealsConsumptionTime;
  
         public QuestionWindow()
         {
@@ -29,12 +33,13 @@ namespace SztucznaIntCw
        
         }
 
-        public QuestionWindow(List<Question> questions, Person person)
+        public QuestionWindow(List<Question> questions, Person person, List<meals> consumptionTimeList)
         {
             InitializeComponent();
 
             systemUser = person;
             this.questions = questions;
+            this.injectedMealsConsumptionTime = consumptionTimeList;
 
             injectedProducts = questions[MainWindow.QuestionCounter].Products;
 
@@ -78,6 +83,11 @@ namespace SztucznaIntCw
                     continue;
                 }
 
+                //var currentProductConsumption = from b in injectedMealsConsumptionTime where b.id_product == injectedProducts[categorySelectCounter].
+                //todo dokończyć przekazywanie obiektu opisującego porę przyjmowania danego produktu (pierwszy, drugi, trzeci, czwarty, piąty posiłek)
+                //  Kruczek polega na tym, że obiekt typu Product nie posiada property przechowującej indeks produktu z bazy. A więc jak by było dużo
+                //  srania się z tym, to tutaj bym dodał to id. Ale jakby trzeba się ostro z tym jebać to można list<meals> przekazać z main window do
+                //  question. To chyba bd lepsze rozwiązanie. Dzisiaj ale już tego nie robie, elo:)
                 systemUser.PrefferedProducts.Add(new Product()
                 {
                     Carbs = injectedProducts[categorySelectCounter].Carbs,
@@ -87,7 +97,12 @@ namespace SztucznaIntCw
                     Fat = injectedProducts[categorySelectCounter].Fat,
                     Kcal = injectedProducts[categorySelectCounter].Kcal,
                     Name = injectedProducts[categorySelectCounter].Name,
-                    Rating = int.Parse(categoryItem.Value.Text)
+                    Rating = int.Parse(categoryItem.Value.Text),
+
+                    ConsumptionTime = new bool[]
+                    {
+                        
+                    } 
                 });
 
                 categorySelectCounter++;
@@ -96,7 +111,7 @@ namespace SztucznaIntCw
             MainWindow.QuestionCounter++;
             if (MainWindow.QuestionCounter < questions.Count)
             {
-                QuestionWindow nextQuestionWindow = new QuestionWindow(questions, systemUser)
+                QuestionWindow nextQuestionWindow = new QuestionWindow(questions, systemUser, injectedMealsConsumptionTime)
                 {
                     StartPosition = FormStartPosition.CenterParent
                 };

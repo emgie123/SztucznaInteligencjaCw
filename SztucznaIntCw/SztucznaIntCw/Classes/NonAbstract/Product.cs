@@ -31,10 +31,13 @@ namespace SztucznaIntCw.Classes.NonAbstract
 
         public MainSourceOf MacroElement { get; set; }
 
-        public Product() { }
+        public bool[] ConsumptionTime { get; set; }
+
+        public Product() { ConsumptionTime = new bool[5]; }
 
         public Product(products product)
         {
+            ConsumptionTime = new bool[5];
             try
             {
                 Protein = product.protein.Value;
@@ -53,5 +56,8 @@ namespace SztucznaIntCw.Classes.NonAbstract
                 Debug.WriteLine("Jedno z przekazanych pól tabeli przechowuje wartość null: {0}", ex);
             }
         }
+
+
+
     }
 }

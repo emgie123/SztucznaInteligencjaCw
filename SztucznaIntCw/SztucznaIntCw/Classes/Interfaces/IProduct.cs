@@ -18,7 +18,9 @@ namespace SztucznaIntCw.Classes.Interfaces
         int Rating { get; set; }
         bool IncludeInDiet { get; set; }
         MainSourceOf MacroElement { get; set; }
+        bool[] ConsumptionTime { get; set; }
+
 
         //  Narazie więcej nie uzupełniałem bo zależy co będzie w modelu klasy siedziało
-    }
+        }
 }
