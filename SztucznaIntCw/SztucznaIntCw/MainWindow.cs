@@ -19,6 +19,9 @@ namespace SztucznaIntCw
         public Person SystemUser;
         public static int QuestionCounter { get; set; }
 
+        private List<string> InputDataValidationList;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +33,9 @@ namespace SztucznaIntCw
             weightTextBox.MaxLength = 3;
             heightTextBox.MaxLength = 3;
             ageTextBox.MaxLength = 3;
+            ektoRadioButton.Checked = true;
+
+       
 
             SystemUser = new Person();
             QuestionCounter = 0;
@@ -48,6 +54,7 @@ namespace SztucznaIntCw
             dataGroupBox.Enabled = true;
             weightTextBox.Enabled = false;
             heightTextBox.Enabled = false;
+            ageTextBox.Enabled = false;
             activityGroupBox.Enabled = false;
             physiqueGroupBox.Enabled = false;
         }
@@ -59,28 +66,62 @@ namespace SztucznaIntCw
             dataGroupBox.Enabled = true;
             weightTextBox.Enabled = true;
             heightTextBox.Enabled = true;
+            ageTextBox.Enabled = true;
             activityGroupBox.Enabled = true;
             physiqueGroupBox.Enabled = true;
-         
+          
+
         }
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
+            if (genderTextBox.Text == string.Empty)
+            {
+                MessageBox.Show(@"Określ płeć!");
+                return;
+            }
+
+            SystemUser.Gender = genderTextBox.Text.ToUpper() == "M" ? TypeOfGender.Male : TypeOfGender.Female;
+ 
             ICalculator calc;
+     
 
             if (detailsDataRadioButton.Checked)
             {
+                if (!ValidateInput())
+                {
+                    string warnings = InputDataValidationList.Aggregate((current, warning) => current + warning);
+
+                    MessageBox.Show(@"Napotkano następujące błędy:" + Environment.NewLine + Environment.NewLine + warnings);
+                    return;
+                }
+                
+                SystemUser.Weight = Convert.ToSingle(weightTextBox.Text);
+                SystemUser.Height = Convert.ToSingle(heightTextBox.Text);
+                SystemUser.Age = Convert.ToInt32(ageTextBox.Text);
+
+                if (ektoRadioButton.Checked) SystemUser.TypeOfPhysique = TypeOfPhysique.Ekto;
+                else if(mezoRadioButton.Checked) SystemUser.TypeOfPhysique = TypeOfPhysique.Mezo;
+                else SystemUser.TypeOfPhysique = TypeOfPhysique.Endo;
+
+                SystemUser.WeeklyStrenghtActivity = Convert.ToInt32(strenghtActivityTextBox.Text);
+                SystemUser.WeeklyAeroActivity = Convert.ToInt32(aeroActivityTextBox.Text);
+             
                 calc = new DetailCalculator();
+        
             }
             else
             {
+          
                 calc = new BasicCalculator();
+        
             }
 
 
             calc.GetKcalValue(SystemUser);
-
-            // neededKcalLabel.Text = @"Twoje zapotrzebowanie wynosi 1943 kcal, BMI: 20.3";
+            calc.SetLabel(neededKcalLabel, SystemUser);
+ 
+ 
 
         }
 
@@ -140,10 +181,12 @@ namespace SztucznaIntCw
             questionWindow.ShowDialog();
 
 
-            Dictionary<int,IMeal> mealsList = new Dictionary<int, IMeal>();
+            
+
             Diet personalDiet = new Diet
             {
                 _choosenProducts = SystemUser.PrefferedProducts,
+                Meals = GetMealsDictionary()
                 
             };
 
@@ -170,7 +213,23 @@ namespace SztucznaIntCw
 
             //TODO meal dict
             return null;
-        } 
+        }
+
+
+        private bool ValidateInput()
+        {
+            InputDataValidationList = new List<string>();
+            
+            if(weightTextBox.Text==string.Empty) InputDataValidationList.Add(@"Podaj wagę." + Environment.NewLine );
+            if(heightTextBox.Text==string.Empty) InputDataValidationList.Add(@"Podaj wzrost." + Environment.NewLine);
+            if(ageTextBox.Text==string.Empty) InputDataValidationList.Add(@"Podaj wiek." + Environment.NewLine);
+            if(strenghtActivityTextBox.Text==string.Empty) InputDataValidationList.Add(@"Podaj czas treningu siłowego." + Environment.NewLine);
+            if(aeroActivityTextBox.Text==string.Empty) InputDataValidationList.Add(@"Podaj czas treningu aerobowego." + Environment.NewLine);
+
+
+            return InputDataValidationList.Count <= 0;
+
+        }
 
 
 

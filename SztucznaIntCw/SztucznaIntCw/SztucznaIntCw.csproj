@@ -67,6 +67,7 @@
     <Compile Include="Classes\Interfaces\IProduct.cs" />
     <Compile Include="Classes\NonAbstract\CalculatorDirectory\BasicCalculator.cs" />
     <Compile Include="Classes\NonAbstract\CalculatorDirectory\DetailCalculator.cs" />
+    <Compile Include="Classes\NonAbstract\CalculatorDirectory\CalculatorFactories.cs" />
     <Compile Include="Classes\NonAbstract\Meal.cs" />
     <Compile Include="Classes\NonAbstract\Person.cs" />
     <Compile Include="Classes\NonAbstract\Product.cs" />

@@ -25,7 +25,7 @@ namespace SztucznaIntCw.Classes.NonAbstract
 
         public int Age { get; set; }
 
-        public decimal BMI { get; set; }
+        public float BMI { get; set; }
 
         public Diet diet { get; set; }
 

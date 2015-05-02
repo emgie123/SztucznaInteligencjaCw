@@ -9,10 +9,9 @@ namespace SztucznaIntCw.Classes.Interfaces
          float Weight { get; set; }
          float Height { get; set; }
          TypeOfGender Gender { get; set; }
-         TypeOfActivity TypeOfActivity { get; set; }
          TypeOfPhysique TypeOfPhysique { get; set; }
          int Age { get; set; }
-         decimal BMI { get; set; }
+         float BMI { get; set; }
          Diet diet { get; set; }
          int TDEE { get; set; }
 

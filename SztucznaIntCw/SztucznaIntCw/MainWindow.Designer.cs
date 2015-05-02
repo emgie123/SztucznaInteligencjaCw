@@ -294,7 +294,7 @@
             // neededKcalLabel
             // 
             this.neededKcalLabel.AutoSize = true;
-            this.neededKcalLabel.Location = new System.Drawing.Point(9, 377);
+            this.neededKcalLabel.Location = new System.Drawing.Point(12, 410);
             this.neededKcalLabel.Name = "neededKcalLabel";
             this.neededKcalLabel.Size = new System.Drawing.Size(43, 13);
             this.neededKcalLabel.TabIndex = 2;
@@ -381,7 +381,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 432);
+            this.ClientSize = new System.Drawing.Size(632, 461);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.neededKcalLabel);
             this.Controls.Add(this.inputDataTypeGroupBox);
