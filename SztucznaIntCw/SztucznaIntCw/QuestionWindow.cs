@@ -83,7 +83,7 @@ namespace SztucznaIntCw
                 //  Kruczek polega na tym, że obiekt typu Product nie posiada property przechowującej indeks produktu z bazy. A więc jak by było dużo
                 //  srania się z tym, to tutaj bym dodał to id. Ale jakby trzeba się ostro z tym jebać to można list<meals> przekazać z main window do
                 //  question. To chyba bd lepsze rozwiązanie. Dzisiaj ale już tego nie robie, elo:)
-                systemUser.diet._choosenProducts.Add(new Product()
+                systemUser.diet.ChoosenProducts.Add(new Product()
                 {
                     Carbs = injectedProducts[categorySelectCounter].Carbs,
                     Protein = injectedProducts[categorySelectCounter].Protein,

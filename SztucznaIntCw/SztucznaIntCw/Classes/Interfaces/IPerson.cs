@@ -14,6 +14,7 @@ namespace SztucznaIntCw.Classes.Interfaces
          float BMI { get; set; }
          Diet diet { get; set; }
          int TDEE { get; set; }
+         int TDEEKcalChange { get; set; }
         
 
          

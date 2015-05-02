@@ -186,8 +186,10 @@ namespace SztucznaIntCw
             };
             questionWindow.ShowDialog();
 
+            AddKcalDifferenceBasedOnDietType(); // określa pole systemuser.IncreaseWeightAdditionalKCAL w zaleznosci od diety i budowy ciała
+
             //TODO
-           // SystemUser.diet.Meals =;
+            // SystemUser.diet.Meals =;
 
 
         }
@@ -207,23 +209,6 @@ namespace SztucznaIntCw
 
         }
 
-        private void  AssignMealsDictionaryToPerson(IPerson person,int mealsCount)
-        {
-
-            Dictionary<int, IMeal> mealsDictionary = new Dictionary<int, IMeal>();
-
-            for (int i = 0; i < mealsCount; i++)
-            {
-                mealsDictionary.Add(i,new Meal());
-            }
-
-
-
-            person.diet.Meals = mealsDictionary;
-           
-        }
-
-
         private bool ValidateInput()
         {
             InputDataValidationList = new List<string>();
@@ -239,6 +224,30 @@ namespace SztucznaIntCw
 
         }
 
+
+        private void AddKcalDifferenceBasedOnDietType()
+        {
+            if (increaseWeightRadioButton.Checked)
+            {
+                SystemUser.TDEEKcalChange = DietKcalFactories.IncreaseWeightAdditionalKCAL[SystemUser.TypeOfPhysique];
+            }
+            else if (reduceWeightRadioButton.Checked)
+            {
+                SystemUser.TDEEKcalChange = DietKcalFactories.LooseWeightMinusKCAL[SystemUser.TypeOfPhysique];
+            }
+
+
+        }
+
+        private void FillUserMealsKCALBasedOnProvidedData(int mealsCount)
+        {
+            Dictionary<int, IMeal> mealsDictionary = new Dictionary<int, IMeal>();
+
+            for (int i = 0; i < mealsCount; i++)
+            {
+                mealsDictionary.Add(i, new Meal());
+            }
+        }
 
 
     }

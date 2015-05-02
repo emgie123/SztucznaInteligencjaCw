@@ -27,6 +27,7 @@ namespace SztucznaIntCw.Classes.NonAbstract
         public Diet diet { get; set; }
 
         public int TDEE { get; set; }
+        public int TDEEKcalChange { get; set; }
         public int WeeklyStrenghtActivity { get; set; }
         public int WeeklyAeroActivity { get; set; }
   

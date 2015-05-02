@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using SztucznaIntCw.Classes.Interfaces;
 using SztucznaIntCw.Classes.NonAbstract;
+using SztucznaIntCw.Enums;
 
 namespace SztucznaIntCw.Classes
 {
     public class Diet
     {
-
-        public List<IProduct> _choosenProducts = new List<IProduct>();
+        public TypeOfDiet TypeofDiet;
+        public List<IProduct> ChoosenProducts = new List<IProduct>();
 
         public Dictionary<int, IMeal> Meals { get; set; }
 
