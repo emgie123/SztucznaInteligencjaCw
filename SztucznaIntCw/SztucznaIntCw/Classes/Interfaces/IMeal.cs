@@ -5,9 +5,9 @@ namespace SztucznaIntCw.Classes.Interfaces
     public interface IMeal
     {
        
-        int GramsOfProteins { get; set; }
-        int GramsOfFats { get; set; }
-        int GramsOfCarbs { get; set; }
+        int TotalGramsOfProteins { get; set; }
+        int TotalGramsOfFats { get; set; }
+        int TotalGramsOfCarbs { get; set; }
 
         List<IProduct> ProductList { get; }
     }

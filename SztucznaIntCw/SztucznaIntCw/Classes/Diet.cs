@@ -9,7 +9,7 @@ namespace SztucznaIntCw.Classes
     public class Diet
     {
 
-        public List<IProduct> _choosenProducts; 
+        public List<IProduct> _choosenProducts = new List<IProduct>();
 
         public Dictionary<int, IMeal> Meals { get; set; }
 

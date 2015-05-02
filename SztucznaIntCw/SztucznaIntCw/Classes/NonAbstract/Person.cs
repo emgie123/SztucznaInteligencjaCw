@@ -8,10 +8,7 @@ namespace SztucznaIntCw.Classes.NonAbstract
     public class Person : IPerson
     {
 
-        public Person()
-        {
-            PrefferedProducts = new List<IProduct>();
-        }
+   
         //...
         public float Weight { get; set; }
 
@@ -33,9 +30,5 @@ namespace SztucznaIntCw.Classes.NonAbstract
         public int WeeklyStrenghtActivity { get; set; }
         public int WeeklyAeroActivity { get; set; }
   
-
-        public List<IMeal> Meals { get; set; }
-
-        public List<IProduct> PrefferedProducts { get; set; }
     }
 }

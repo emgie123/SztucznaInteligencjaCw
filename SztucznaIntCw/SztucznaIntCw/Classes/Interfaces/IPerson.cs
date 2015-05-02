@@ -14,11 +14,12 @@ namespace SztucznaIntCw.Classes.Interfaces
          float BMI { get; set; }
          Diet diet { get; set; }
          int TDEE { get; set; }
+        
 
+         
          int WeeklyStrenghtActivity { get; set; }
          int WeeklyAeroActivity { get; set; }
 
-         List<IMeal> Meals { get; set; }
-         List<IProduct> PrefferedProducts { get; set; }
+    
     }
 }

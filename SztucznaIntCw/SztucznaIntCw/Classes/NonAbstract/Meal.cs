@@ -5,9 +5,9 @@ namespace SztucznaIntCw.Classes.NonAbstract
 {
     public class Meal : IMeal
     {
-        public int GramsOfProteins { get; set; }
-        public int GramsOfFats { get; set; }
-        public int GramsOfCarbs { get; set; }
+        public int TotalGramsOfProteins { get; set; }
+        public int TotalGramsOfFats { get; set; }
+        public int TotalGramsOfCarbs { get; set; }
 
         public List<IProduct> ProductList { get;  set; }
 
@@ -15,6 +15,8 @@ namespace SztucznaIntCw.Classes.NonAbstract
         {
             ProductList = new List<IProduct>();
         }
+
+        
 
     }
 }

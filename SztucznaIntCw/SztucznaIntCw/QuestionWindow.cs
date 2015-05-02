@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SztucznaIntCw.Classes.Interfaces;
+using SztucznaIntCw.Classes;
 using SztucznaIntCw.Classes.NonAbstract;
 using SztucznaIntCw.DBModel;
-using SztucznaIntCw.Enums;
 using SztucznaIntCw.Utilities;
 
 namespace SztucznaIntCw
@@ -67,7 +62,7 @@ namespace SztucznaIntCw
                 this.panel1.Controls.Add(categoryValue.Last().Key);
                 this.panel1.Controls.Add(categoryValue.Last().Value);
             }
-
+           
         }
 
         private void NextCategory_Click(object sender, EventArgs e)
@@ -88,7 +83,7 @@ namespace SztucznaIntCw
                 //  Kruczek polega na tym, że obiekt typu Product nie posiada property przechowującej indeks produktu z bazy. A więc jak by było dużo
                 //  srania się z tym, to tutaj bym dodał to id. Ale jakby trzeba się ostro z tym jebać to można list<meals> przekazać z main window do
                 //  question. To chyba bd lepsze rozwiązanie. Dzisiaj ale już tego nie robie, elo:)
-                systemUser.PrefferedProducts.Add(new Product()
+                systemUser.diet._choosenProducts.Add(new Product()
                 {
                     Carbs = injectedProducts[categorySelectCounter].Carbs,
                     Protein = injectedProducts[categorySelectCounter].Protein,

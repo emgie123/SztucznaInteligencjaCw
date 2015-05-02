@@ -35,9 +35,13 @@ namespace SztucznaIntCw
             ageTextBox.MaxLength = 3;
             ektoRadioButton.Checked = true;
 
+            dietGeneratorGroupBox.Enabled = false;
+
+
        
 
             SystemUser = new Person();
+            SystemUser.diet = new Diet();
             QuestionCounter = 0;
         }
 
@@ -120,8 +124,10 @@ namespace SztucznaIntCw
 
             calc.GetKcalValue(SystemUser);
             calc.SetLabel(neededKcalLabel, SystemUser);
- 
- 
+
+            dietGeneratorGroupBox.Enabled = true;
+            fiveMealsRadioButton.Checked = true;
+            leaveCurrentWeightRadioButton.Checked = true;
 
         }
 
@@ -180,15 +186,8 @@ namespace SztucznaIntCw
             };
             questionWindow.ShowDialog();
 
-
-            
-
-            Diet personalDiet = new Diet
-            {
-                _choosenProducts = SystemUser.PrefferedProducts,
-                Meals = GetMealsDictionary()
-                
-            };
+            //TODO
+           // SystemUser.diet.Meals =;
 
 
         }
@@ -208,11 +207,20 @@ namespace SztucznaIntCw
 
         }
 
-        private Dictionary<int, IMeal> GetMealsDictionary()
+        private void  AssignMealsDictionaryToPerson(IPerson person,int mealsCount)
         {
 
-            //TODO meal dict
-            return null;
+            Dictionary<int, IMeal> mealsDictionary = new Dictionary<int, IMeal>();
+
+            for (int i = 0; i < mealsCount; i++)
+            {
+                mealsDictionary.Add(i,new Meal());
+            }
+
+
+
+            person.diet.Meals = mealsDictionary;
+           
         }
 
 
