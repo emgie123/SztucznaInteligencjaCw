@@ -45,7 +45,7 @@ namespace SztucznaIntCw.Classes.NonAbstract
                 {
                    {0,(dailyGrams)=>(dailyGrams*25)/100},
                    {1,(dailyGrams)=>(dailyGrams*15)/100},
-                   {2,(dailyGrams)=>(dailyGrams*30)/100},
+                   {2,(dailyGrams)=>(dailyGrams*25)/100},
                    {3,(dailyGrams)=>(dailyGrams*20)/100},
                    {4,(dailyGrams)=>(dailyGrams*15)/100} 
                 }
