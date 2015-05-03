@@ -10,9 +10,9 @@ namespace SztucznaIntCw.Classes.Interfaces
     public interface IProduct
     {
         string Name { get; set; }
-        float Protein { get; set; }
-        float Carbs { get; set; }
-        float Fat { get; set; }
+        decimal Protein { get; set; }
+        decimal Carbs { get; set; }
+        decimal Fat { get; set; }
         float Kcal { get; set; }
         string CategoryName { get; set; }
         int Rating { get; set; }
