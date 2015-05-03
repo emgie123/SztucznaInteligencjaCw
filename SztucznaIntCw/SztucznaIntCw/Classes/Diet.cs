@@ -12,6 +12,8 @@ namespace SztucznaIntCw.Classes
         public Dictionary<int, IMeal> Meals { get; set; }
 
         public TypeOfDiet TypeofDiet;
+        public int AmountOfMeals;
+
         public List<IProduct> ChoosenProducts = new List<IProduct>();
 
         private List<IProduct> _proteinProducts = new List<IProduct>();
@@ -34,7 +36,7 @@ namespace SztucznaIntCw.Classes
 
         private void generateMeal(IMeal meal)
         {
-            float weigth = 0;
+            decimal weigth = 0;
 
             foreach (var proteinProduct in _proteinProducts)
             {

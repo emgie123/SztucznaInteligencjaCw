@@ -10,9 +10,9 @@ namespace SztucznaIntCw.Classes.NonAbstract
 
    
         //...
-        public float Weight { get; set; }
+        public decimal Weight { get; set; }
 
-        public float Height { get; set; }
+        public decimal Height { get; set; }
 
         public TypeOfGender Gender { get; set; }
 
@@ -22,11 +22,13 @@ namespace SztucznaIntCw.Classes.NonAbstract
 
         public int Age { get; set; }
 
-        public float BMI { get; set; }
+        public decimal BMI { get; set; }
 
         public Diet diet { get; set; }
 
-        public int TDEE { get; set; }
+        public int CalculatedTDEE { get; set; }
+        public int TDEEWithDietTypeIncluded { get; set; }
+
         public int TDEEKcalChange { get; set; }
         public int WeeklyStrenghtActivity { get; set; }
         public int WeeklyAeroActivity { get; set; }

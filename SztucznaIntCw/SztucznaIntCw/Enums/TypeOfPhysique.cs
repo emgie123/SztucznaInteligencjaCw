@@ -2,8 +2,8 @@
 {
     public enum TypeOfPhysique
     {
-        Ekto,
         Mezo,
+        Ekto,
         Endo
     }
 }

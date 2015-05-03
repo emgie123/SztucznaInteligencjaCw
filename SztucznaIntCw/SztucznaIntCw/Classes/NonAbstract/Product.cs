@@ -16,11 +16,11 @@ namespace SztucznaIntCw.Classes.NonAbstract
 
         public int Rating { get; set; }
 
-        public float Protein { get; set; }
+        public decimal Protein { get; set; }
 
-        public float Carbs { get; set; }
+        public decimal Carbs { get; set; }
 
-        public float Fat { get; set; }
+        public decimal Fat { get; set; }
 
         public float Kcal { get; set; }
 
@@ -42,9 +42,9 @@ namespace SztucznaIntCw.Classes.NonAbstract
             try
             {
                 ID = product.id_product;
-                Protein = product.protein.Value;
-                Carbs = product.carbs.Value;
-                Fat = product.fat.Value;
+                Protein = (decimal)product.protein.Value;
+                Carbs = (decimal)product.carbs.Value;
+                Fat = (decimal)product.fat.Value;
                 Kcal = product.kcal.Value;
                 Name = product.name_product;
                 MacroElement = (Fat > Protein && Fat > Carbs)

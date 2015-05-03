@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Abstract\Calculator.cs" />
-    <Compile Include="Classes\Abstract\DietMakroComponentsAmount.cs" />
+    <Compile Include="Classes\NonAbstract\DietMakroComponentsAmount.cs" />
     <Compile Include="Classes\Diet.cs" />
     <Compile Include="Classes\Interfaces\ICalculator.cs" />
     <Compile Include="Classes\Interfaces\IMeal.cs" />
@@ -70,7 +70,7 @@
     <Compile Include="Classes\NonAbstract\CalculatorDirectory\DetailCalculator.cs" />
     <Compile Include="Classes\NonAbstract\CalculatorDirectory\CalculatorFactories.cs" />
     <Compile Include="Classes\NonAbstract\DietKcalFactories.cs" />
-    <Compile Include="Classes\NonAbstract\EktomorphDietMakroComponentsAmount.cs" />
+    <Compile Include="Classes\NonAbstract\MacroElements.cs" />
     <Compile Include="Classes\NonAbstract\Meal.cs" />
     <Compile Include="Classes\NonAbstract\Person.cs" />
     <Compile Include="Classes\NonAbstract\Product.cs" />
