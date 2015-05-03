@@ -10,5 +10,7 @@ namespace SztucznaIntCw.Classes.Interfaces
         int TotalGramsOfCarbs { get; set; }
 
         List<IProduct> ProductList { get; }
+        //List<IProduct> ProductList { get; }
+        Dictionary<IProduct, float> MealProducts { get; }
     }
 }

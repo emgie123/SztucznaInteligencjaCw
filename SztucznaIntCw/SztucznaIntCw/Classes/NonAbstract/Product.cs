@@ -12,6 +12,7 @@ namespace SztucznaIntCw.Classes.NonAbstract
 {
     public class Product : IProduct
     {
+        public int ID { get; set; }
 
         public int Rating { get; set; }
 
@@ -40,6 +41,7 @@ namespace SztucznaIntCw.Classes.NonAbstract
             ConsumptionTime = new bool[5];
             try
             {
+                ID = product.id_product;
                 Protein = product.protein.Value;
                 Carbs = product.carbs.Value;
                 Fat = product.fat.Value;

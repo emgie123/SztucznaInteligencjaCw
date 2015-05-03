@@ -162,6 +162,9 @@ namespace SztucznaIntCw
 
         private void GeneratePersonalizedDiet_Click(object sender, EventArgs e)
         {
+            QuestionCounter = 0;
+            SystemUser.diet.ChoosenProducts.Clear();
+            
             List<Question> QuestionList = new List<Question>();
             IEnumerable<categories> categoriesList;
             IEnumerable<products> productsList;
@@ -188,6 +191,7 @@ namespace SztucznaIntCw
 
             AddKcalDifferenceBasedOnDietType(); // określa pole systemuser.IncreaseWeightAdditionalKCAL w zaleznosci od diety i budowy ciała
 
+            SystemUser.diet.GenerateDiet();
             //TODO
             // SystemUser.diet.Meals =;
 

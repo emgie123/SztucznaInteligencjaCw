@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using SztucznaIntCw.Classes;
 using SztucznaIntCw.Classes.NonAbstract;
 using SztucznaIntCw.DBModel;
+using SztucznaIntCw.Enums;
 using SztucznaIntCw.Utilities;
 
 namespace SztucznaIntCw
@@ -83,8 +84,13 @@ namespace SztucznaIntCw
                 //  Kruczek polega na tym, że obiekt typu Product nie posiada property przechowującej indeks produktu z bazy. A więc jak by było dużo
                 //  srania się z tym, to tutaj bym dodał to id. Ale jakby trzeba się ostro z tym jebać to można list<meals> przekazać z main window do
                 //  question. To chyba bd lepsze rozwiązanie. Dzisiaj ale już tego nie robie, elo:)
+                var eatingTimesForCurrentProduct = (from c in injectedMealsConsumptionTime
+                    where c.id_product == injectedProducts[categorySelectCounter].ID
+                    select c).ToList();
+                
                 systemUser.diet.ChoosenProducts.Add(new Product()
                 {
+                    ID = injectedProducts[categorySelectCounter].ID,
                     Carbs = injectedProducts[categorySelectCounter].Carbs,
                     Protein = injectedProducts[categorySelectCounter].Protein,
                     CategoryName = injectedProducts[categorySelectCounter].CategoryName,
@@ -100,6 +106,21 @@ namespace SztucznaIntCw
                     } 
                 });
 
+                if(eatingTimesForCurrentProduct.Count != 0)
+                {
+                    systemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.FirstMeal] =
+                    eatingTimesForCurrentProduct[0].first_meal;
+                    systemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.SecondMeal] =
+                        eatingTimesForCurrentProduct[0].second_meal;
+                    systemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.ThirdMeal] =
+                        eatingTimesForCurrentProduct[0].third_meal;
+                    systemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.FourthMeal] =
+                        eatingTimesForCurrentProduct[0].fourth_meal;
+                    systemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.FifthMeal] =
+                        eatingTimesForCurrentProduct[0].fifth_meal;
+                }
+                
+                
                 categorySelectCounter++;
             }
 
