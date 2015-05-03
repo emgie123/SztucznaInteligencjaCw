@@ -10,6 +10,8 @@ namespace SztucznaIntCw.Classes
     public class Diet
     {
         public TypeOfDiet TypeofDiet;
+        public int AmountOfMeals;
+
         public List<IProduct> ChoosenProducts = new List<IProduct>();
 
         public Dictionary<int, IMeal> Meals { get; set; }

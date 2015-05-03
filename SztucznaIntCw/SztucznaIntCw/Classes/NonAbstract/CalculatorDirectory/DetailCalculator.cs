@@ -25,22 +25,22 @@ namespace SztucznaIntCw.Classes.NonAbstract.CalculatorDirectory
 
             var TDEE = BMR + TEA + NEAT;
             TDEE = TDEE + GetTEF(person, TDEE);
-            person.TDEE = TDEE;
+            person.CalculatedTDEE = TDEE;
             AssignBMI(person);
 
         }
 
         public override void SetLabel(Label label,IPerson person)
         {
-            label.Text = String.Format(DetailPattern, person.TDEE,Environment.NewLine, person.BMI, ResolveBMIResult(person.BMI));
+            label.Text = String.Format(DetailPattern, person.CalculatedTDEE,Environment.NewLine, person.BMI, ResolveBMIResult(person.BMI));
         }
 
-        //TDEE = BMR + TEA + TEF + NEAT [kcal]
+        //CalculatedTDEE = BMR + TEA + TEF + NEAT [kcal]
 
         //podstawowa przemiana materii
         private int GetBMR(IPerson person)
         {
-            return (int) (((9.99*person.Weight) + (6.25*person.Height) - (4.92*person.Age)) + _selectedAdditionalValue);
+            return (int) (((9.99m*person.Weight) + (6.25m*person.Height) - (4.92m*person.Age)) + _selectedAdditionalValue);
         }
 
         //kalorie spalone podczas aktywności fizycznej
@@ -72,16 +72,16 @@ namespace SztucznaIntCw.Classes.NonAbstract.CalculatorDirectory
         private void AssignBMI(IPerson person)
         {
             var heightInMeters = person.Height/100;
-            person.BMI = (float)Math.Round(person.Weight/(heightInMeters*heightInMeters),1);
+            person.BMI = Math.Round(person.Weight / (heightInMeters * heightInMeters), 1);
         }
 
-        private string ResolveBMIResult(float bmi)
+        private string ResolveBMIResult(decimal bmi)
         {
-            if (bmi < 18.5)
+            if (bmi < 18.5m)
             {
                 return "niedowaga";
             }
-            else if (bmi >= 18.5 && bmi < 25)
+            else if (bmi >= 18.5m && bmi < 25)
             {
                 return "waga prawidłowa";
             }

@@ -12,8 +12,8 @@ namespace TestProject
         public void TestMethod1()
         {
 
-            EktomorphDietMakroComponentsAmount ekto = new EktomorphDietMakroComponentsAmount(TypeOfDiet.ToGainWeight, 3);
-            var c = ekto.GetMealsDictionary();
+           // EktomorphDietMakroComponentsAmount ekto = new EktomorphDietMakroComponentsAmount(TypeOfDiet.ToGainWeight, 3);
+           // var c = ekto.GetMealsDictionary();
         }
     }
 }

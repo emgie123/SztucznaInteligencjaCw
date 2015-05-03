@@ -6,15 +6,16 @@ namespace SztucznaIntCw.Classes.Interfaces
 {
     public interface IPerson
     {
-         float Weight { get; set; }
-         float Height { get; set; }
+         decimal Weight { get; set; }
+         decimal Height { get; set; }
          TypeOfGender Gender { get; set; }
          TypeOfPhysique TypeOfPhysique { get; set; }
          int Age { get; set; }
-         float BMI { get; set; }
+         decimal BMI { get; set; }
          Diet diet { get; set; }
-         int TDEE { get; set; }
+         int CalculatedTDEE { get; set; }
          int TDEEKcalChange { get; set; }
+         int TDEEWithDietTypeIncluded { get; set; }
         
 
          

@@ -15,7 +15,7 @@ namespace SztucznaIntCw
     public partial class MainWindow : Form
     {
 
-        private TypeOfProvidedData providedDataType;
+       
         public Person SystemUser;
         public static int QuestionCounter { get; set; }
 
@@ -56,7 +56,7 @@ namespace SztucznaIntCw
         {
             
             dataGroupBox.Enabled = true;
-            weightTextBox.Enabled = false;
+            weightTextBox.Enabled = true;
             heightTextBox.Enabled = false;
             ageTextBox.Enabled = false;
             activityGroupBox.Enabled = false;
@@ -85,6 +85,12 @@ namespace SztucznaIntCw
                 return;
             }
 
+            if (weightTextBox.Text == string.Empty)
+            {
+                MessageBox.Show(@"Podaj wagę!");
+                return;
+            } 
+
             SystemUser.Gender = genderTextBox.Text.ToUpper() == "M" ? TypeOfGender.Male : TypeOfGender.Female;
  
             ICalculator calc;
@@ -100,8 +106,8 @@ namespace SztucznaIntCw
                     return;
                 }
                 
-                SystemUser.Weight = Convert.ToSingle(weightTextBox.Text);
-                SystemUser.Height = Convert.ToSingle(heightTextBox.Text);
+                SystemUser.Weight = Convert.ToDecimal(weightTextBox.Text);
+                SystemUser.Height = Convert.ToDecimal(heightTextBox.Text);
                 SystemUser.Age = Convert.ToInt32(ageTextBox.Text);
 
                 if (ektoRadioButton.Checked) SystemUser.TypeOfPhysique = TypeOfPhysique.Ekto;
@@ -187,8 +193,9 @@ namespace SztucznaIntCw
             questionWindow.ShowDialog();
 
             AddKcalDifferenceBasedOnDietType(); // określa pole systemuser.IncreaseWeightAdditionalKCAL w zaleznosci od diety i budowy ciała
-
-            //TODO
+            SystemUser.diet.AmountOfMeals = threeMealsRadioButton.Checked ? 3 : fourMealsRadioButton.Checked ? 4 : 5;
+            DietMakroComponentsAmount makroComponents = new DietMakroComponentsAmount(SystemUser);
+            SystemUser.diet.Meals = makroComponents.GetMealsDictionary();
             // SystemUser.diet.Meals =;
 
 
@@ -213,7 +220,7 @@ namespace SztucznaIntCw
         {
             InputDataValidationList = new List<string>();
             
-            if(weightTextBox.Text==string.Empty) InputDataValidationList.Add(@"Podaj wagę." + Environment.NewLine );
+    
             if(heightTextBox.Text==string.Empty) InputDataValidationList.Add(@"Podaj wzrost." + Environment.NewLine);
             if(ageTextBox.Text==string.Empty) InputDataValidationList.Add(@"Podaj wiek." + Environment.NewLine);
             if(strenghtActivityTextBox.Text==string.Empty) InputDataValidationList.Add(@"Podaj czas treningu siłowego." + Environment.NewLine);
@@ -236,7 +243,7 @@ namespace SztucznaIntCw
                 SystemUser.TDEEKcalChange = DietKcalFactories.LooseWeightMinusKCAL[SystemUser.TypeOfPhysique];
             }
 
-
+            SystemUser.TDEEWithDietTypeIncluded = SystemUser.CalculatedTDEE + SystemUser.TDEEKcalChange;
         }
 
         private void FillUserMealsKCALBasedOnProvidedData(int mealsCount)
