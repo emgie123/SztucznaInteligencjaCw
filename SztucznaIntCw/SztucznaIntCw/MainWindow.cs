@@ -198,13 +198,13 @@ namespace SztucznaIntCw
             AddKcalDifferenceBasedOnDietType(); // określa pole systemuser.IncreaseWeightAdditionalKCAL w zaleznosci od diety i budowy ciała
 
 
-            SystemUser.diet.GenerateDiet();
+         
             //TODO
 
             SystemUser.diet.AmountOfMeals = threeMealsRadioButton.Checked ? 3 : fourMealsRadioButton.Checked ? 4 : 5;
             DietMakroComponentsAmount makroComponents = new DietMakroComponentsAmount(SystemUser);
             SystemUser.diet.Meals = makroComponents.GetMealsDictionary();
-
+            SystemUser.diet.GenerateDiet();
             // SystemUser.diet.Meals =;
 
 
