@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using SztucznaIntCw.Classes;
@@ -41,7 +42,7 @@ namespace SztucznaIntCw
        
 
             SystemUser = new Person();
-            SystemUser.diet = new Diet();
+            //SystemUser.diet = new Diet();
             QuestionCounter = 0;
         }
 
@@ -161,13 +162,55 @@ namespace SztucznaIntCw
 
         private void GenerateDefaultDiet_Click(object sender, EventArgs e)
         {
-            //  Pobieramy z bazy wszystkie produkty
-            //  Na ich podstawie generujemy dietę zgodną z zaznaczonym radiobuttonem
-            //  Wyświetlamy grubej świni przykładową dietę redukcyjną (nie chcemy grubasów w naszym kraju) :D
+            SystemUser.diet = new Diet();
+
+            IEnumerable<categories> categoriesList;
+            IEnumerable<products> productsList;
+            IEnumerable<meals> mealsConsumptionTime;
+
+            SystemUser.diet.ChoosenProducts.Clear();
+
+            using (var dbConnection = new Entities())
+            {
+                categoriesList = (from b in dbConnection.categories select b).ToList();
+                productsList = (from c in dbConnection.products select c).ToList();
+                mealsConsumptionTime = (from d in dbConnection.meals select d).ToList();
+            }
+            foreach (var product in productsList)
+            {
+                SystemUser.diet.ChoosenProducts.Add(new Product(product));
+                var catArray = from c in categoriesList where c.id_category == product.id_category select c.nameCategory;
+                SystemUser.diet.ChoosenProducts.Last().CategoryName = catArray.Last();
+
+                var consumptionTimeForCurrentProduct = (from d in mealsConsumptionTime where d.id_product == product.id_product select d).ToList();
+                if (consumptionTimeForCurrentProduct.Count == 0)
+                {
+                    Debug.WriteLine("No product to choose. Sorry");
+                    continue;
+                }
+                SystemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.FirstMeal] = consumptionTimeForCurrentProduct[0].first_meal;
+                SystemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.SecondMeal] = consumptionTimeForCurrentProduct[0].second_meal;
+                SystemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.ThirdMeal] = consumptionTimeForCurrentProduct[0].third_meal;
+                SystemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.FourthMeal] = consumptionTimeForCurrentProduct[0].fourth_meal;
+                SystemUser.diet.ChoosenProducts.Last().ConsumptionTime[(int)FoodConsumptionTime.FifthMeal] = consumptionTimeForCurrentProduct[0].fifth_meal;
+            }
+
+            AddKcalDifferenceBasedOnDietType();
+
+            SystemUser.diet.AmountOfMeals = threeMealsRadioButton.Checked ? 3 : fourMealsRadioButton.Checked ? 4 : 5;
+            DietMakroComponentsAmount makroComponents = new DietMakroComponentsAmount(SystemUser);
+            SystemUser.diet.Meals = makroComponents.GetMealsDictionary();
+
+            SystemUser.diet.GenerateDiet();
+
+            YourMeals showMeals = new YourMeals(SystemUser);
+            showMeals.ShowDialog();
+
         }
 
         private void GeneratePersonalizedDiet_Click(object sender, EventArgs e)
         {
+            SystemUser.diet = new Diet();
             QuestionCounter = 0;
             SystemUser.diet.ChoosenProducts.Clear();
             
@@ -195,16 +238,16 @@ namespace SztucznaIntCw
             };
             questionWindow.ShowDialog();
 
-            AddKcalDifferenceBasedOnDietType(); // określa pole systemuser.IncreaseWeightAdditionalKCAL w zaleznosci od diety i budowy ciała
-
-
-         
-            //TODO
+            AddKcalDifferenceBasedOnDietType();
 
             SystemUser.diet.AmountOfMeals = threeMealsRadioButton.Checked ? 3 : fourMealsRadioButton.Checked ? 4 : 5;
             DietMakroComponentsAmount makroComponents = new DietMakroComponentsAmount(SystemUser);
             SystemUser.diet.Meals = makroComponents.GetMealsDictionary();
+            
             SystemUser.diet.GenerateDiet();
+
+            YourMeals showMeals = new YourMeals(SystemUser);
+            showMeals.ShowDialog();
             // SystemUser.diet.Meals =;
 
 

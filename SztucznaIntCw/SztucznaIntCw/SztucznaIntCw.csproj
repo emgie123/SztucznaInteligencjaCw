@@ -121,6 +121,12 @@
       <DependentUpon>QuestionWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Question.cs" />
+    <Compile Include="YourMeals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YourMeals.Designer.cs">
+      <DependentUpon>YourMeals.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +141,9 @@
     </Compile>
     <EmbeddedResource Include="QuestionWindow.resx">
       <DependentUpon>QuestionWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YourMeals.resx">
+      <DependentUpon>YourMeals.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DBModel\DataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

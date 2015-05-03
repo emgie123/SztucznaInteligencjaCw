@@ -41,6 +41,7 @@ namespace SztucznaIntCw.Classes.NonAbstract
             ConsumptionTime = new bool[5];
             try
             {
+                Rating = 50;
                 ID = product.id_product;
                 Protein = (decimal)product.protein.Value;
                 Carbs = (decimal)product.carbs.Value;
