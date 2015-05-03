@@ -14,7 +14,6 @@ namespace SztucznaIntCw.Classes
         public TypeOfDiet TypeofDiet;
         public List<IProduct> ChoosenProducts = new List<IProduct>();
 
-        public Dictionary<int, IMeal> Meals { get; set; }
         private List<IProduct> _proteinProducts = new List<IProduct>();
         private List<IProduct> _carbsProducts = new List<IProduct>();
         private List<IProduct> _fatProducts = new List<IProduct>(); 

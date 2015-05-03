@@ -79,11 +79,6 @@ namespace SztucznaIntCw
                     continue;
                 }
 
-                //var currentProductConsumption = from b in injectedMealsConsumptionTime where b.id_product == injectedProducts[categorySelectCounter].
-                //todo dokończyć przekazywanie obiektu opisującego porę przyjmowania danego produktu (pierwszy, drugi, trzeci, czwarty, piąty posiłek)
-                //  Kruczek polega na tym, że obiekt typu Product nie posiada property przechowującej indeks produktu z bazy. A więc jak by było dużo
-                //  srania się z tym, to tutaj bym dodał to id. Ale jakby trzeba się ostro z tym jebać to można list<meals> przekazać z main window do
-                //  question. To chyba bd lepsze rozwiązanie. Dzisiaj ale już tego nie robie, elo:)
                 var eatingTimesForCurrentProduct = (from c in injectedMealsConsumptionTime
                     where c.id_product == injectedProducts[categorySelectCounter].ID
                     select c).ToList();
@@ -99,11 +94,6 @@ namespace SztucznaIntCw
                     Kcal = injectedProducts[categorySelectCounter].Kcal,
                     Name = injectedProducts[categorySelectCounter].Name,
                     Rating = int.Parse(categoryItem.Value.Text),
-
-                    ConsumptionTime = new bool[]
-                    {
-                        
-                    } 
                 });
 
                 if(eatingTimesForCurrentProduct.Count != 0)

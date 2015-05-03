@@ -2,7 +2,6 @@
 {
     public enum FoodConsumptionTime
     {
-        FirstMeal,
         FirstMeal = 0,
         SecondMeal,
         ThirdMeal,
