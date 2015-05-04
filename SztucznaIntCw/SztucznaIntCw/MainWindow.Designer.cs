@@ -52,23 +52,23 @@
             this.detailsDataRadioButton = new System.Windows.Forms.RadioButton();
             this.neededKcalLabel = new System.Windows.Forms.Label();
             this.dietGeneratorGroupBox = new System.Windows.Forms.GroupBox();
-            this.GeneratePersonalizedDiet = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.reduceWeightRadioButton = new System.Windows.Forms.RadioButton();
-            this.increaseWeightRadioButton = new System.Windows.Forms.RadioButton();
-            this.leaveCurrentWeightRadioButton = new System.Windows.Forms.RadioButton();
-            this.GenerateDefaultDiet = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.threeMealsRadioButton = new System.Windows.Forms.RadioButton();
-            this.fourMealsRadioButton = new System.Windows.Forms.RadioButton();
             this.fiveMealsRadioButton = new System.Windows.Forms.RadioButton();
+            this.fourMealsRadioButton = new System.Windows.Forms.RadioButton();
+            this.threeMealsRadioButton = new System.Windows.Forms.RadioButton();
+            this.GeneratePersonalizedDiet = new System.Windows.Forms.Button();
+            this.dietTypeGroupBox = new System.Windows.Forms.GroupBox();
+            this.reduceWeightRadioButton = new System.Windows.Forms.RadioButton();
+            this.gainWeightRadioButton = new System.Windows.Forms.RadioButton();
+            this.maintainWeightRadioButton = new System.Windows.Forms.RadioButton();
+            this.GenerateDefaultDiet = new System.Windows.Forms.Button();
             this.dataGroupBox.SuspendLayout();
             this.activityGroupBox.SuspendLayout();
             this.physiqueGroupBox.SuspendLayout();
             this.inputDataTypeGroupBox.SuspendLayout();
             this.dietGeneratorGroupBox.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.dietTypeGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGroupBox
@@ -309,7 +309,7 @@
             // 
             this.dietGeneratorGroupBox.Controls.Add(this.groupBox3);
             this.dietGeneratorGroupBox.Controls.Add(this.GeneratePersonalizedDiet);
-            this.dietGeneratorGroupBox.Controls.Add(this.groupBox2);
+            this.dietGeneratorGroupBox.Controls.Add(this.dietTypeGroupBox);
             this.dietGeneratorGroupBox.Controls.Add(this.GenerateDefaultDiet);
             this.dietGeneratorGroupBox.Location = new System.Drawing.Point(327, 13);
             this.dietGeneratorGroupBox.Name = "dietGeneratorGroupBox";
@@ -317,71 +317,6 @@
             this.dietGeneratorGroupBox.TabIndex = 3;
             this.dietGeneratorGroupBox.TabStop = false;
             this.dietGeneratorGroupBox.Text = "Generator diety";
-            // 
-            // GeneratePersonalizedDiet
-            // 
-            this.GeneratePersonalizedDiet.Location = new System.Drawing.Point(150, 176);
-            this.GeneratePersonalizedDiet.Name = "GeneratePersonalizedDiet";
-            this.GeneratePersonalizedDiet.Size = new System.Drawing.Size(132, 75);
-            this.GeneratePersonalizedDiet.TabIndex = 5;
-            this.GeneratePersonalizedDiet.Text = "Wygeneruj dietę na podstawie wybranych produktów";
-            this.GeneratePersonalizedDiet.UseVisualStyleBackColor = true;
-            this.GeneratePersonalizedDiet.Click += new System.EventHandler(this.GeneratePersonalizedDiet_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.reduceWeightRadioButton);
-            this.groupBox2.Controls.Add(this.increaseWeightRadioButton);
-            this.groupBox2.Controls.Add(this.leaveCurrentWeightRadioButton);
-            this.groupBox2.Location = new System.Drawing.Point(12, 78);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(270, 95);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Typ generowanej diety";
-            // 
-            // reduceWeightRadioButton
-            // 
-            this.reduceWeightRadioButton.AutoSize = true;
-            this.reduceWeightRadioButton.Location = new System.Drawing.Point(15, 65);
-            this.reduceWeightRadioButton.Name = "reduceWeightRadioButton";
-            this.reduceWeightRadioButton.Size = new System.Drawing.Size(138, 17);
-            this.reduceWeightRadioButton.TabIndex = 8;
-            this.reduceWeightRadioButton.TabStop = true;
-            this.reduceWeightRadioButton.Text = "Redukująca masę ciała";
-            this.reduceWeightRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // increaseWeightRadioButton
-            // 
-            this.increaseWeightRadioButton.AutoSize = true;
-            this.increaseWeightRadioButton.Location = new System.Drawing.Point(15, 19);
-            this.increaseWeightRadioButton.Name = "increaseWeightRadioButton";
-            this.increaseWeightRadioButton.Size = new System.Drawing.Size(145, 17);
-            this.increaseWeightRadioButton.TabIndex = 6;
-            this.increaseWeightRadioButton.TabStop = true;
-            this.increaseWeightRadioButton.Text = "Zwiększająca masę ciała";
-            this.increaseWeightRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // leaveCurrentWeightRadioButton
-            // 
-            this.leaveCurrentWeightRadioButton.AutoSize = true;
-            this.leaveCurrentWeightRadioButton.Location = new System.Drawing.Point(15, 42);
-            this.leaveCurrentWeightRadioButton.Name = "leaveCurrentWeightRadioButton";
-            this.leaveCurrentWeightRadioButton.Size = new System.Drawing.Size(117, 17);
-            this.leaveCurrentWeightRadioButton.TabIndex = 7;
-            this.leaveCurrentWeightRadioButton.TabStop = true;
-            this.leaveCurrentWeightRadioButton.Text = "Na utrzymanie wagi";
-            this.leaveCurrentWeightRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // GenerateDefaultDiet
-            // 
-            this.GenerateDefaultDiet.Location = new System.Drawing.Point(12, 176);
-            this.GenerateDefaultDiet.Name = "GenerateDefaultDiet";
-            this.GenerateDefaultDiet.Size = new System.Drawing.Size(132, 75);
-            this.GenerateDefaultDiet.TabIndex = 4;
-            this.GenerateDefaultDiet.Text = "Wygeneruj dietę na podstawie wsystkich dostępnych produktów";
-            this.GenerateDefaultDiet.UseVisualStyleBackColor = true;
-            this.GenerateDefaultDiet.Click += new System.EventHandler(this.GenerateDefaultDiet_Click);
             // 
             // groupBox3
             // 
@@ -395,16 +330,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ilość posiłków w ciągu dnia";
             // 
-            // threeMealsRadioButton
+            // fiveMealsRadioButton
             // 
-            this.threeMealsRadioButton.AutoSize = true;
-            this.threeMealsRadioButton.Location = new System.Drawing.Point(80, 20);
-            this.threeMealsRadioButton.Name = "threeMealsRadioButton";
-            this.threeMealsRadioButton.Size = new System.Drawing.Size(31, 17);
-            this.threeMealsRadioButton.TabIndex = 0;
-            this.threeMealsRadioButton.TabStop = true;
-            this.threeMealsRadioButton.Text = "3";
-            this.threeMealsRadioButton.UseVisualStyleBackColor = true;
+            this.fiveMealsRadioButton.AutoSize = true;
+            this.fiveMealsRadioButton.Location = new System.Drawing.Point(6, 20);
+            this.fiveMealsRadioButton.Name = "fiveMealsRadioButton";
+            this.fiveMealsRadioButton.Size = new System.Drawing.Size(31, 17);
+            this.fiveMealsRadioButton.TabIndex = 2;
+            this.fiveMealsRadioButton.TabStop = true;
+            this.fiveMealsRadioButton.Text = "5";
+            this.fiveMealsRadioButton.UseVisualStyleBackColor = true;
             // 
             // fourMealsRadioButton
             // 
@@ -417,16 +352,81 @@
             this.fourMealsRadioButton.Text = "4";
             this.fourMealsRadioButton.UseVisualStyleBackColor = true;
             // 
-            // fiveMealsRadioButton
+            // threeMealsRadioButton
             // 
-            this.fiveMealsRadioButton.AutoSize = true;
-            this.fiveMealsRadioButton.Location = new System.Drawing.Point(6, 20);
-            this.fiveMealsRadioButton.Name = "fiveMealsRadioButton";
-            this.fiveMealsRadioButton.Size = new System.Drawing.Size(31, 17);
-            this.fiveMealsRadioButton.TabIndex = 2;
-            this.fiveMealsRadioButton.TabStop = true;
-            this.fiveMealsRadioButton.Text = "5";
-            this.fiveMealsRadioButton.UseVisualStyleBackColor = true;
+            this.threeMealsRadioButton.AutoSize = true;
+            this.threeMealsRadioButton.Location = new System.Drawing.Point(80, 20);
+            this.threeMealsRadioButton.Name = "threeMealsRadioButton";
+            this.threeMealsRadioButton.Size = new System.Drawing.Size(31, 17);
+            this.threeMealsRadioButton.TabIndex = 0;
+            this.threeMealsRadioButton.TabStop = true;
+            this.threeMealsRadioButton.Text = "3";
+            this.threeMealsRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // GeneratePersonalizedDiet
+            // 
+            this.GeneratePersonalizedDiet.Location = new System.Drawing.Point(150, 176);
+            this.GeneratePersonalizedDiet.Name = "GeneratePersonalizedDiet";
+            this.GeneratePersonalizedDiet.Size = new System.Drawing.Size(132, 75);
+            this.GeneratePersonalizedDiet.TabIndex = 5;
+            this.GeneratePersonalizedDiet.Text = "Wygeneruj dietę na podstawie wybranych produktów";
+            this.GeneratePersonalizedDiet.UseVisualStyleBackColor = true;
+            this.GeneratePersonalizedDiet.Click += new System.EventHandler(this.GeneratePersonalizedDiet_Click);
+            // 
+            // dietTypeGroupBox
+            // 
+            this.dietTypeGroupBox.Controls.Add(this.reduceWeightRadioButton);
+            this.dietTypeGroupBox.Controls.Add(this.gainWeightRadioButton);
+            this.dietTypeGroupBox.Controls.Add(this.maintainWeightRadioButton);
+            this.dietTypeGroupBox.Location = new System.Drawing.Point(12, 78);
+            this.dietTypeGroupBox.Name = "dietTypeGroupBox";
+            this.dietTypeGroupBox.Size = new System.Drawing.Size(270, 95);
+            this.dietTypeGroupBox.TabIndex = 6;
+            this.dietTypeGroupBox.TabStop = false;
+            this.dietTypeGroupBox.Text = "Typ generowanej diety";
+            // 
+            // reduceWeightRadioButton
+            // 
+            this.reduceWeightRadioButton.AutoSize = true;
+            this.reduceWeightRadioButton.Location = new System.Drawing.Point(15, 65);
+            this.reduceWeightRadioButton.Name = "reduceWeightRadioButton";
+            this.reduceWeightRadioButton.Size = new System.Drawing.Size(138, 17);
+            this.reduceWeightRadioButton.TabIndex = 8;
+            this.reduceWeightRadioButton.TabStop = true;
+            this.reduceWeightRadioButton.Text = "Redukująca masę ciała";
+            this.reduceWeightRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // gainWeightRadioButton
+            // 
+            this.gainWeightRadioButton.AutoSize = true;
+            this.gainWeightRadioButton.Location = new System.Drawing.Point(15, 19);
+            this.gainWeightRadioButton.Name = "gainWeightRadioButton";
+            this.gainWeightRadioButton.Size = new System.Drawing.Size(145, 17);
+            this.gainWeightRadioButton.TabIndex = 6;
+            this.gainWeightRadioButton.TabStop = true;
+            this.gainWeightRadioButton.Text = "Zwiększająca masę ciała";
+            this.gainWeightRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // maintainWeightRadioButton
+            // 
+            this.maintainWeightRadioButton.AutoSize = true;
+            this.maintainWeightRadioButton.Location = new System.Drawing.Point(15, 42);
+            this.maintainWeightRadioButton.Name = "maintainWeightRadioButton";
+            this.maintainWeightRadioButton.Size = new System.Drawing.Size(117, 17);
+            this.maintainWeightRadioButton.TabIndex = 7;
+            this.maintainWeightRadioButton.TabStop = true;
+            this.maintainWeightRadioButton.Text = "Na utrzymanie wagi";
+            this.maintainWeightRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // GenerateDefaultDiet
+            // 
+            this.GenerateDefaultDiet.Location = new System.Drawing.Point(12, 176);
+            this.GenerateDefaultDiet.Name = "GenerateDefaultDiet";
+            this.GenerateDefaultDiet.Size = new System.Drawing.Size(132, 75);
+            this.GenerateDefaultDiet.TabIndex = 4;
+            this.GenerateDefaultDiet.Text = "Wygeneruj dietę na podstawie wsystkich dostępnych produktów";
+            this.GenerateDefaultDiet.UseVisualStyleBackColor = true;
+            this.GenerateDefaultDiet.Click += new System.EventHandler(this.GenerateDefaultDiet_Click);
             // 
             // MainWindow
             // 
@@ -448,10 +448,10 @@
             this.inputDataTypeGroupBox.ResumeLayout(false);
             this.inputDataTypeGroupBox.PerformLayout();
             this.dietGeneratorGroupBox.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.dietTypeGroupBox.ResumeLayout(false);
+            this.dietTypeGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,10 +478,10 @@
         public System.Windows.Forms.TextBox genderTextBox;
         private System.Windows.Forms.GroupBox dietGeneratorGroupBox;
         public System.Windows.Forms.Button GeneratePersonalizedDiet;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox dietTypeGroupBox;
         private System.Windows.Forms.RadioButton reduceWeightRadioButton;
-        private System.Windows.Forms.RadioButton increaseWeightRadioButton;
-        private System.Windows.Forms.RadioButton leaveCurrentWeightRadioButton;
+        private System.Windows.Forms.RadioButton gainWeightRadioButton;
+        private System.Windows.Forms.RadioButton maintainWeightRadioButton;
         public System.Windows.Forms.Button GenerateDefaultDiet;
         public System.Windows.Forms.TextBox ageTextBox;
         public System.Windows.Forms.Label ageLabel;

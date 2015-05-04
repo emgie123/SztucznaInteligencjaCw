@@ -90,8 +90,9 @@ namespace SztucznaIntCw
             {
                 MessageBox.Show(@"Podaj wagę!");
                 return;
-            } 
+            }
 
+            SystemUser.Weight = Convert.ToDecimal(weightTextBox.Text);
             SystemUser.Gender = genderTextBox.Text.ToUpper() == "M" ? TypeOfGender.Male : TypeOfGender.Female;
  
             ICalculator calc;
@@ -134,7 +135,7 @@ namespace SztucznaIntCw
 
             dietGeneratorGroupBox.Enabled = true;
             fiveMealsRadioButton.Checked = true;
-            leaveCurrentWeightRadioButton.Checked = true;
+            maintainWeightRadioButton.Checked = true;
 
         }
 
@@ -244,6 +245,11 @@ namespace SztucznaIntCw
             DietMakroComponentsAmount makroComponents = new DietMakroComponentsAmount(SystemUser);
             SystemUser.diet.Meals = makroComponents.GetMealsDictionary();
             
+
+        
+            //Tooooooo musisz dodac do 2 buttona tez
+            CalculateKcalAndPrepareDiet();
+      
             SystemUser.diet.GenerateDiet();
 
             YourMeals showMeals = new YourMeals(SystemUser);
@@ -286,7 +292,7 @@ namespace SztucznaIntCw
 
         private void AddKcalDifferenceBasedOnDietType()
         {
-            if (increaseWeightRadioButton.Checked)
+            if (gainWeightRadioButton.Checked)
             {
                 SystemUser.TDEEKcalChange = DietKcalFactories.IncreaseWeightAdditionalKCAL[SystemUser.TypeOfPhysique];
             }
@@ -298,16 +304,16 @@ namespace SztucznaIntCw
             SystemUser.TDEEWithDietTypeIncluded = SystemUser.CalculatedTDEE + SystemUser.TDEEKcalChange;
         }
 
-        private void FillUserMealsKCALBasedOnProvidedData(int mealsCount)
+   
+        private void CalculateKcalAndPrepareDiet()
         {
-            Dictionary<int, IMeal> mealsDictionary = new Dictionary<int, IMeal>();
+            SystemUser.diet.AmountOfMeals = threeMealsRadioButton.Checked ? 3 : fourMealsRadioButton.Checked ? 4 : 5;
+            SystemUser.diet.TypeofDiet = maintainWeightRadioButton.Checked ? TypeOfDiet.ToMaintainWeight : gainWeightRadioButton.Checked ? TypeOfDiet.ToGainWeight : TypeOfDiet.ToLoseWeight;
 
-            for (int i = 0; i < mealsCount; i++)
-            {
-                mealsDictionary.Add(i, new Meal());
-            }
+            AddKcalDifferenceBasedOnDietType(); // określa pole systemuser.IncreaseWeightAdditionalKCAL w zaleznosci od diety i budowy ciała
+            DietMakroComponentsAmount makroComponents = new DietMakroComponentsAmount(SystemUser);
+            SystemUser.diet.Meals = makroComponents.GetMealsDictionary();
         }
-
 
     }
 }
