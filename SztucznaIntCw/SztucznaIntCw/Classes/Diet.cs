@@ -27,83 +27,101 @@ namespace SztucznaIntCw.Classes
         {
             splitProductsInCategories();
 
-            foreach (var meal in Meals)
-            {
-                generateMeal(meal.Value);
-            }
+            generateMeal(Meals);
+            
             
         }
 
-        private void generateMeal(IMeal meal)
+        private void generateMeal(Dictionary<int, IMeal> meals)
         {
-            decimal weigth = 0;
+            //  todo zmodyfikować generowanie diety - uwzględnić, że jeśli coś jest źródłem tłuszczu to
+            //  także może być źródłem białka a więc zmniejszy sie także ilość potrzebnego białka w pozostałych produktach.
 
-            for (int i = 0; i < _proteinProducts.Count; i++)
+            foreach (var meal in meals)
             {
-                if (i == _proteinProducts.Count - 1)
+                decimal weigth = 0;
+
+                for (int i = 0; i < _proteinProducts.Count; i++)
                 {
-                    weigth = (meal.TotalGramsOfProteins * 100) / _proteinProducts[i].Protein;
-                    meal.MealProducts.Add(_proteinProducts[i], weigth);
+                    if (_proteinProducts[i].ConsumptionTime[meal.Key] == false)
+                    {
+                        continue;
+                    }
+                    if (i == _proteinProducts.Count - 1)
+                    {
+                        weigth = (meal.Value.TotalGramsOfProteins * 100) / _proteinProducts[i].Protein;
+                        meal.Value.MealProducts.Add(_proteinProducts[i], weigth);
+                        _proteinProducts.RemoveAt(i);
+                        break;
+                    }
+
+                    if (_proteinProducts[i].Protein > meal.Value.TotalGramsOfProteins)
+                    {
+                        continue;
+                    }
+
+                    weigth = (meal.Value.TotalGramsOfProteins * 100) / _proteinProducts[i].Protein;
+
+                    meal.Value.MealProducts.Add(_proteinProducts[i], weigth);
                     _proteinProducts.RemoveAt(i);
                     break;
                 }
 
-                if (_proteinProducts[i].Protein > meal.TotalGramsOfProteins)
+                for (int i = 0; i < _carbsProducts.Count; i++)
                 {
-                    continue;
-                }
-                
-                weigth = (meal.TotalGramsOfProteins * 100) / _proteinProducts[i].Protein;
+                    if (_carbsProducts[i].ConsumptionTime[meal.Key] == false)
+                    {
+                        continue;
+                    }
+                    if (i == _carbsProducts.Count - 1)
+                    {
+                        weigth = (meal.Value.TotalGramsOfCarbs * 100) / _carbsProducts[i].Carbs;
+                        meal.Value.MealProducts.Add(_carbsProducts[i], weigth);
+                        _carbsProducts.RemoveAt(i);
+                        break;
+                    }
 
-                meal.MealProducts.Add(_proteinProducts[i], weigth);
-                _proteinProducts.RemoveAt(i);
-                break;
-            }
+                    if (_carbsProducts[i].Carbs > meal.Value.TotalGramsOfCarbs)
+                    {
+                        continue;
+                    }
 
-            for (int i = 0; i < _carbsProducts.Count; i++)
-            {
-                if (i == _fatProducts.Count - 1)
-                {
-                    weigth = (meal.TotalGramsOfCarbs * 100) / _carbsProducts[i].Carbs;
-                    meal.MealProducts.Add(_carbsProducts[i], weigth);
+                    weigth = (meal.Value.TotalGramsOfCarbs * 100) / _carbsProducts[i].Carbs;
+
+                    meal.Value.MealProducts.Add(_carbsProducts[i], weigth);
                     _carbsProducts.RemoveAt(i);
                     break;
                 }
 
-                if (_carbsProducts[i].Carbs > meal.TotalGramsOfCarbs)
+                for (int i = 0; i < _fatProducts.Count; i++)
                 {
-                    continue;
-                }
-                
-                weigth = (meal.TotalGramsOfCarbs * 100) / _carbsProducts[i].Carbs;
+                    if (_fatProducts[i].ConsumptionTime[meal.Key] == false)
+                    {
+                        continue;
+                    }
+                    if (i == _fatProducts.Count - 1)
+                    {
+                        weigth = (meal.Value.TotalGramsOfFats * 100) / _fatProducts[i].Fat;
 
-                meal.MealProducts.Add(_carbsProducts[i], weigth);
-                _carbsProducts.RemoveAt(i);
-                break;
-            }
+                        meal.Value.MealProducts.Add(_fatProducts[i], weigth);
+                        _fatProducts.RemoveAt(i);
+                        break;
+                    }
 
-            for (int i = 0; i < _fatProducts.Count; i++)
-            {
-                if (i == _fatProducts.Count - 1)
-                {
-                    weigth = (meal.TotalGramsOfFats * 100) / _fatProducts[i].Fat;
+                    if (_fatProducts[i].Fat > meal.Value.TotalGramsOfFats)
+                    {
+                        continue;
+                    }
 
-                    meal.MealProducts.Add(_fatProducts[i], weigth);
+                    weigth = (meal.Value.TotalGramsOfFats * 100) / _fatProducts[i].Fat;
+
+                    meal.Value.MealProducts.Add(_fatProducts[i], weigth);
                     _fatProducts.RemoveAt(i);
                     break;
                 }
-
-                if (_fatProducts[i].Fat > meal.TotalGramsOfFats)
-                {
-                    continue;
-                }
-                
-                weigth = (meal.TotalGramsOfFats * 100) / _fatProducts[i].Fat;
-
-                meal.MealProducts.Add(_fatProducts[i], weigth);
-                _fatProducts.RemoveAt(i);
-                break;
             }
+
+            
         }
 
         private void splitProductsInCategories()
