@@ -130,7 +130,7 @@ namespace SztucznaIntCw
             }
             else
             {
-          
+                SystemUser.BMI = 23m;
                 calc = new BasicCalculator();
         
             }
@@ -138,6 +138,11 @@ namespace SztucznaIntCw
 
             calc.GetKcalValue(SystemUser);
             calc.SetLabel(neededKcalLabel, SystemUser);
+
+
+            if (SystemUser.BMI < 18.5m) gainWeightRadioButton.Checked = true;
+            else if (SystemUser.BMI >= 25) reduceWeightRadioButton.Checked = true;
+            else maintainWeightRadioButton.Checked = true;
 
             dietGeneratorGroupBox.Enabled = true;
 
