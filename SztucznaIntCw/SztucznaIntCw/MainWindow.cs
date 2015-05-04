@@ -37,9 +37,14 @@ namespace SztucznaIntCw
             ektoRadioButton.Checked = true;
 
             dietGeneratorGroupBox.Enabled = false;
+            fiveMealsRadioButton.Checked = true;
+            maintainWeightRadioButton.Checked = true;
 
-
-       
+            ektoRadioButton.CheckedChanged += (sender,e) => dietGeneratorGroupBox.Enabled = false;
+            mezoRadioButton.CheckedChanged += (sender,e) => dietGeneratorGroupBox.Enabled = false;
+            endoRadioButton.CheckedChanged += (sender,e) => dietGeneratorGroupBox.Enabled = false;
+            detailsDataRadioButton.CheckedChanged += (sender,e) => dietGeneratorGroupBox.Enabled = false;
+            simpleDataRadioButton.CheckedChanged += (sender,e) => dietGeneratorGroupBox.Enabled = false;
 
             SystemUser = new Person();
             //SystemUser.diet = new Diet();
@@ -50,6 +55,7 @@ namespace SztucznaIntCw
         private void genderTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(e.KeyChar == 'M' || e.KeyChar == 'K' || e.KeyChar =='m' || e.KeyChar =='k' || e.KeyChar == (char)Keys.Back);
+            dietGeneratorGroupBox.Enabled = false;
         }
 
 
@@ -134,8 +140,7 @@ namespace SztucznaIntCw
             calc.SetLabel(neededKcalLabel, SystemUser);
 
             dietGeneratorGroupBox.Enabled = true;
-            fiveMealsRadioButton.Checked = true;
-            maintainWeightRadioButton.Checked = true;
+
 
         }
 
@@ -154,11 +159,13 @@ namespace SztucznaIntCw
         private void weightTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {//48-57
             e.Handled = (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != (char)Keys.Back;
+            dietGeneratorGroupBox.Enabled = false;
         }
 
         private void heightTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != (char)Keys.Back;
+            dietGeneratorGroupBox.Enabled = false;
         }
 
         private void GenerateDefaultDiet_Click(object sender, EventArgs e)
@@ -262,16 +269,17 @@ namespace SztucznaIntCw
         private void ageTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != (char)Keys.Back;
+            dietGeneratorGroupBox.Enabled = false;
         }
 
         private void aeroActivityTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            dietGeneratorGroupBox.Enabled = false;
         }
 
         private void strenghtActivityTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            dietGeneratorGroupBox.Enabled = false;
         }
 
         private bool ValidateInput()
