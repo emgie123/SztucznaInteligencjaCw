@@ -73,9 +73,9 @@
             this.FirstMealLabel.AutoSize = true;
             this.FirstMealLabel.Location = new System.Drawing.Point(12, 0);
             this.FirstMealLabel.Name = "FirstMealLabel";
-            this.FirstMealLabel.Size = new System.Drawing.Size(49, 13);
+            this.FirstMealLabel.Size = new System.Drawing.Size(48, 13);
             this.FirstMealLabel.TabIndex = 2;
-            this.FirstMealLabel.Text = "FirstMeal";
+            this.FirstMealLabel.Text = "I posiłek";
             // 
             // SecondMealPanel
             // 
@@ -91,9 +91,9 @@
             this.SecondMealLabel.AutoSize = true;
             this.SecondMealLabel.Location = new System.Drawing.Point(12, 0);
             this.SecondMealLabel.Name = "SecondMealLabel";
-            this.SecondMealLabel.Size = new System.Drawing.Size(67, 13);
+            this.SecondMealLabel.Size = new System.Drawing.Size(51, 13);
             this.SecondMealLabel.TabIndex = 2;
-            this.SecondMealLabel.Text = "SecondMeal";
+            this.SecondMealLabel.Text = "II posiłek";
             // 
             // SecondMealTextBox
             // 
@@ -107,7 +107,7 @@
             // 
             this.ThirdMealPanel.Controls.Add(this.ThirdMealLabel);
             this.ThirdMealPanel.Controls.Add(this.ThirdMealTextBox);
-            this.ThirdMealPanel.Location = new System.Drawing.Point(383, 12);
+            this.ThirdMealPanel.Location = new System.Drawing.Point(368, 12);
             this.ThirdMealPanel.Name = "ThirdMealPanel";
             this.ThirdMealPanel.Size = new System.Drawing.Size(350, 143);
             this.ThirdMealPanel.TabIndex = 4;
@@ -119,7 +119,7 @@
             this.ThirdMealLabel.Name = "ThirdMealLabel";
             this.ThirdMealLabel.Size = new System.Drawing.Size(54, 13);
             this.ThirdMealLabel.TabIndex = 2;
-            this.ThirdMealLabel.Text = "ThirdMeal";
+            this.ThirdMealLabel.Text = "III posiłek";
             // 
             // ThirdMealTextBox
             // 
@@ -133,7 +133,7 @@
             // 
             this.FourthMealPanel.Controls.Add(this.FourthMealLabel);
             this.FourthMealPanel.Controls.Add(this.FourthMealTextBox);
-            this.FourthMealPanel.Location = new System.Drawing.Point(383, 167);
+            this.FourthMealPanel.Location = new System.Drawing.Point(368, 167);
             this.FourthMealPanel.Name = "FourthMealPanel";
             this.FourthMealPanel.Size = new System.Drawing.Size(350, 143);
             this.FourthMealPanel.TabIndex = 3;
@@ -143,9 +143,9 @@
             this.FourthMealLabel.AutoSize = true;
             this.FourthMealLabel.Location = new System.Drawing.Point(12, 0);
             this.FourthMealLabel.Name = "FourthMealLabel";
-            this.FourthMealLabel.Size = new System.Drawing.Size(60, 13);
+            this.FourthMealLabel.Size = new System.Drawing.Size(55, 13);
             this.FourthMealLabel.TabIndex = 2;
-            this.FourthMealLabel.Text = "FourthMeal";
+            this.FourthMealLabel.Text = "IV posiłek";
             // 
             // FourthMealTextBox
             // 
@@ -159,7 +159,7 @@
             // 
             this.FifthMealPanel.Controls.Add(this.FifthMealLabel);
             this.FifthMealPanel.Controls.Add(this.FifthMealTextBox);
-            this.FifthMealPanel.Location = new System.Drawing.Point(12, 316);
+            this.FifthMealPanel.Location = new System.Drawing.Point(12, 318);
             this.FifthMealPanel.Name = "FifthMealPanel";
             this.FifthMealPanel.Size = new System.Drawing.Size(350, 143);
             this.FifthMealPanel.TabIndex = 3;
@@ -169,9 +169,9 @@
             this.FifthMealLabel.AutoSize = true;
             this.FifthMealLabel.Location = new System.Drawing.Point(12, 0);
             this.FifthMealLabel.Name = "FifthMealLabel";
-            this.FifthMealLabel.Size = new System.Drawing.Size(50, 13);
+            this.FifthMealLabel.Size = new System.Drawing.Size(52, 13);
             this.FifthMealLabel.TabIndex = 2;
-            this.FifthMealLabel.Text = "FifthMeal";
+            this.FifthMealLabel.Text = "V posiłek";
             // 
             // FifthMealTextBox
             // 
