@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using SztucznaIntCw.Classes.Interfaces;
 using SztucznaIntCw.Classes.NonAbstract;
@@ -25,134 +26,92 @@ namespace SztucznaIntCw.Classes
 
         public void GenerateDiet()
         {
-            splitProductsInCategories();
+            
+            foreach (var meal in Meals)
+            {
+                getMacroElementForCurrentMeal(MainSourceOf.Protein, meal.Key, _proteinProducts);
+                getMacroElementForCurrentMeal(MainSourceOf.Carbs, meal.Key, _carbsProducts);
+                getMacroElementForCurrentMeal(MainSourceOf.Fat, meal.Key, _fatProducts);
 
-            generateMeal(Meals);
+                composeMeal(_proteinProducts, meal.Value);
+                composeMeal(_carbsProducts, meal.Value);
+                composeMeal(_fatProducts, meal.Value);
+
+            }
             
             
         }
 
-        private void generateMeal(Dictionary<int, IMeal> meals)
+        private void getMacroElementForCurrentMeal(MainSourceOf macroElement, int mealNumber, List<IProduct> destinationList)
         {
-            //  todo zmodyfikować generowanie diety - uwzględnić, że jeśli coś jest źródłem tłuszczu to
-            //  także może być źródłem białka a więc zmniejszy sie także ilość potrzebnego białka w pozostałych produktach.
+            destinationList.Clear();
+            destinationList.AddRange(ChoosenProducts.Where(choosenProduct => choosenProduct.ConsumptionTime[mealNumber] == true && 
+                choosenProduct.MacroElement == macroElement));
+            destinationList.Sort((x,y) => y.Rating.CompareTo(x.Rating));
+        }
 
-            foreach (var meal in meals)
+        private void composeMeal(List<IProduct> productsForCurrentMeal, IMeal meal)
+        {
+            var currentMacroElement = productsForCurrentMeal[0].MacroElement;
+            int weightOfComponent = 0;
+            switch (currentMacroElement)
             {
-                decimal weigth = 0;
-
-                for (int i = 0; i < _proteinProducts.Count; i++)
+                case MainSourceOf.Protein:
                 {
-                    if (_proteinProducts[i].ConsumptionTime[meal.Key] == false)
+                    for (int i = 0; i < productsForCurrentMeal.Count; i++)
                     {
-                        continue;
-                    }
-                    if (i == _proteinProducts.Count - 1)
-                    {
-                        weigth = (meal.Value.TotalGramsOfProteins * 100) / _proteinProducts[i].Protein;
-                        meal.Value.MealProducts.Add(_proteinProducts[i], weigth);
-                        _proteinProducts.RemoveAt(i);
+                        if (meal.TotalGramsOfProteins <= 0)
+                        {
+                            break;
+                        }
+                        weightOfComponent = (int)((meal.TotalGramsOfProteins * 100) / productsForCurrentMeal[i].Protein);
+                        meal.TotalGramsOfCarbs -= (weightOfComponent * productsForCurrentMeal[i].Carbs) / 100;
+                        meal.TotalGramsOfFats -= (weightOfComponent * productsForCurrentMeal[i].Fat) / 100;
+                        meal.MealProducts.Add(productsForCurrentMeal[i], weightOfComponent);
+                        ChoosenProducts.Remove(productsForCurrentMeal[i]);
                         break;
-                    }
-
-                    if (_proteinProducts[i].Protein > meal.Value.TotalGramsOfProteins)
-                    {
-                        continue;
-                    }
-
-                    weigth = (meal.Value.TotalGramsOfProteins * 100) / _proteinProducts[i].Protein;
-
-                    meal.Value.MealProducts.Add(_proteinProducts[i], weigth);
-                    _proteinProducts.RemoveAt(i);
+                    }                  
                     break;
                 }
-
-                for (int i = 0; i < _carbsProducts.Count; i++)
+                case MainSourceOf.Carbs:
                 {
-                    if (_carbsProducts[i].ConsumptionTime[meal.Key] == false)
+                    for (int i = 0; i < productsForCurrentMeal.Count; i++)
                     {
-                        continue;
-                    }
-                    if (i == _carbsProducts.Count - 1)
-                    {
-                        weigth = (meal.Value.TotalGramsOfCarbs * 100) / _carbsProducts[i].Carbs;
-                        meal.Value.MealProducts.Add(_carbsProducts[i], weigth);
-                        _carbsProducts.RemoveAt(i);
+                        if (meal.TotalGramsOfCarbs <= 0)
+                        {
+                            break;
+                        }
+                        weightOfComponent = (int)((meal.TotalGramsOfCarbs * 100) / productsForCurrentMeal[i].Carbs);
+                        meal.TotalGramsOfProteins -= (weightOfComponent * productsForCurrentMeal[i].Protein) / 100;
+                        meal.TotalGramsOfFats -= (weightOfComponent * productsForCurrentMeal[i].Fat) / 100;
+                        meal.MealProducts.Add(productsForCurrentMeal[i], weightOfComponent);
+                        ChoosenProducts.Remove(productsForCurrentMeal[i]);
                         break;
                     }
-
-                    if (_carbsProducts[i].Carbs > meal.Value.TotalGramsOfCarbs)
-                    {
-                        continue;
-                    }
-
-                    weigth = (meal.Value.TotalGramsOfCarbs * 100) / _carbsProducts[i].Carbs;
-
-                    meal.Value.MealProducts.Add(_carbsProducts[i], weigth);
-                    _carbsProducts.RemoveAt(i);
                     break;
                 }
-
-                for (int i = 0; i < _fatProducts.Count; i++)
+                case MainSourceOf.Fat:
                 {
-                    if (_fatProducts[i].ConsumptionTime[meal.Key] == false)
+                    for (int i = 0; i < productsForCurrentMeal.Count; i++)
                     {
-                        continue;
-                    }
-                    if (i == _fatProducts.Count - 1)
-                    {
-                        weigth = (meal.Value.TotalGramsOfFats * 100) / _fatProducts[i].Fat;
-
-                        meal.Value.MealProducts.Add(_fatProducts[i], weigth);
-                        _fatProducts.RemoveAt(i);
+                        if (meal.TotalGramsOfFats <= 0)
+                        {
+                            break;
+                        }
+                        weightOfComponent = (int)((meal.TotalGramsOfFats * 100) / productsForCurrentMeal[i].Fat);
+                        meal.TotalGramsOfCarbs -= (weightOfComponent * productsForCurrentMeal[i].Carbs) / 100;
+                        meal.TotalGramsOfProteins -= (weightOfComponent * productsForCurrentMeal[i].Protein) / 100;
+                        meal.MealProducts.Add(productsForCurrentMeal[i], weightOfComponent);
+                        ChoosenProducts.Remove(productsForCurrentMeal[i]);
                         break;
                     }
-
-                    if (_fatProducts[i].Fat > meal.Value.TotalGramsOfFats)
-                    {
-                        continue;
-                    }
-
-                    weigth = (meal.Value.TotalGramsOfFats * 100) / _fatProducts[i].Fat;
-
-                    meal.Value.MealProducts.Add(_fatProducts[i], weigth);
-                    _fatProducts.RemoveAt(i);
                     break;
+                }
+                default:
+                {
+                    return;
                 }
             }
-
-            
         }
-
-        private void splitProductsInCategories()
-        {
-            foreach (var product in ChoosenProducts)
-            {
-                switch (product.MacroElement)
-                {
-                    case MainSourceOf.Protein:
-                    {
-                        _proteinProducts.Add(product);
-                        break;
-                    }
-
-                    case MainSourceOf.Carbs:
-                    {
-                        _carbsProducts.Add(product);
-                        break;
-                    }
-                        
-                    case MainSourceOf.Fat:
-                    {
-                        _fatProducts.Add(product);
-                        break;
-                    }
-                }
-            }
-            _proteinProducts.Sort((x,y) => y.Protein.CompareTo(x.Protein));
-            _carbsProducts.Sort((x,y) => y.Carbs.CompareTo(x.Carbs));
-            _fatProducts.Sort((x,y) => y.Fat.CompareTo(x.Fat));
-        }
-
     }
 }
