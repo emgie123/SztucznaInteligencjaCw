@@ -251,12 +251,6 @@ namespace SztucznaIntCw
 
             AddKcalDifferenceBasedOnDietType();
 
-            SystemUser.diet.AmountOfMeals = threeMealsRadioButton.Checked ? 3 : fourMealsRadioButton.Checked ? 4 : 5;
-            DietMakroComponentsAmount makroComponents = new DietMakroComponentsAmount(SystemUser);
-            SystemUser.diet.Meals = makroComponents.GetMealsDictionary();
-            
-
-        
             //Tooooooo musisz dodac do 2 buttona tez
             CalculateKcalAndPrepareDiet();
       
