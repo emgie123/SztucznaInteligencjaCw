@@ -4,6 +4,6 @@
     {
         ToMaintainWeight,
         ToGainWeight,
-        ToLoseWeight
+        ToReduceWeight
     }
 }

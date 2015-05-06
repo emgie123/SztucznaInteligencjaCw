@@ -313,7 +313,7 @@ namespace SztucznaIntCw
         private void CalculateKcalAndPrepareDiet()
         {
             SystemUser.diet.AmountOfMeals = threeMealsRadioButton.Checked ? 3 : fourMealsRadioButton.Checked ? 4 : 5;
-            SystemUser.diet.TypeofDiet = maintainWeightRadioButton.Checked ? TypeOfDiet.ToMaintainWeight : gainWeightRadioButton.Checked ? TypeOfDiet.ToGainWeight : TypeOfDiet.ToLoseWeight;
+            SystemUser.diet.TypeofDiet = maintainWeightRadioButton.Checked ? TypeOfDiet.ToMaintainWeight : gainWeightRadioButton.Checked ? TypeOfDiet.ToGainWeight : TypeOfDiet.ToReduceWeight;
 
             AddKcalDifferenceBasedOnDietType(); // określa pole systemuser.IncreaseWeightAdditionalKCAL w zaleznosci od diety i budowy ciała
             DietMakroComponentsAmount makroComponents = new DietMakroComponentsAmount(SystemUser);

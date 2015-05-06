@@ -10,38 +10,38 @@ namespace SztucznaIntCw.Classes.NonAbstract.CalculatorDirectory
     public static class CalculatorFactories
     {
 
-        public static Dictionary<TypeOfPhysique, Func<int,int, int>> TeaStrenghtActivityFactory = new Dictionary
-            <TypeOfPhysique, Func<int,int, int>>()
+        public static Dictionary<TypeOfPhysique, Func<decimal, decimal, decimal>> TeaStrenghtActivityFactory = new Dictionary
+            <TypeOfPhysique, Func<decimal, decimal, decimal>>()
         {
-            {TypeOfPhysique.Ekto, (activityTime,BMR) => (activityTime*9) + (7*BMR/100)},
-            {TypeOfPhysique.Mezo, (activityTime,BMR) => (activityTime*8) + (int)(5.5*BMR/100)},
-            {TypeOfPhysique.Endo, (activityTime,BMR) => (activityTime*7) + (4*BMR/100)},
+            {TypeOfPhysique.Ekto, (activityTime,BMR) => Math.Round((activityTime*9) + 0.07m*BMR,MidpointRounding.AwayFromZero)},
+            {TypeOfPhysique.Mezo, (activityTime,BMR) => Math.Round((activityTime*8) + 0.055m*BMR,MidpointRounding.AwayFromZero)},
+            {TypeOfPhysique.Endo, (activityTime,BMR) => Math.Round((activityTime*7) + 0.04m*BMR,MidpointRounding.AwayFromZero)},
         };
 
 
-        public static Dictionary<TypeOfPhysique, Func<int, int>> TeaAeroActivityFactory = new Dictionary
-          <TypeOfPhysique, Func<int, int>>()
+        public static Dictionary<TypeOfPhysique, Func<decimal, decimal>> TeaAeroActivityFactory = new Dictionary
+          <TypeOfPhysique, Func<decimal, decimal>>()
         {
             {TypeOfPhysique.Ekto, (activityTime) => activityTime*10 + 160},
-            {TypeOfPhysique.Mezo, (activityTime) => (int)(activityTime*7.5 + 120)},
+            {TypeOfPhysique.Mezo, (activityTime) => activityTime*7.5m + 120},
             {TypeOfPhysique.Endo, (activityTime) => activityTime*5 + 60},
         };
 
 
-        public static Dictionary<TypeOfPhysique, Func<int>> NEATValueFactory = new Dictionary
-       <TypeOfPhysique, Func<int>>()
+        public static Dictionary<TypeOfPhysique, Func<decimal>> NEATValueFactory = new Dictionary
+       <TypeOfPhysique, Func<decimal>>()
         {
             {TypeOfPhysique.Ekto, () => 300},
             {TypeOfPhysique.Mezo, () => 240},
             {TypeOfPhysique.Endo, () => 160}
         };
 
-        public static Dictionary<TypeOfPhysique, Func<int,int>> TEFValueFactory = new Dictionary
-        <TypeOfPhysique, Func<int,int>>()
+        public static Dictionary<TypeOfPhysique, Func<decimal, decimal>> TEFValueFactory = new Dictionary
+        <TypeOfPhysique, Func<decimal, decimal>>()
         {
-            {TypeOfPhysique.Ekto, (TDEE) => TDEE*10/100},
-            {TypeOfPhysique.Mezo, (TDEE) => TDEE*8/100},
-            {TypeOfPhysique.Endo, (TDEE) => TDEE*6/100}
+            {TypeOfPhysique.Ekto, (TDEE) => TDEE*0.1m},
+            {TypeOfPhysique.Mezo, (TDEE) => TDEE*0.08m},
+            {TypeOfPhysique.Endo, (TDEE) => TDEE*0.06m}
         };
 
 

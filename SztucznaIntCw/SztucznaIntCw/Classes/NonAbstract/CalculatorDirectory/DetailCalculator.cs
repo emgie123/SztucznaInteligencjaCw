@@ -6,7 +6,7 @@ using SztucznaIntCw.Enums;
 
 namespace SztucznaIntCw.Classes.NonAbstract.CalculatorDirectory
 {
-    class DetailCalculator : Calculator
+    public class DetailCalculator : Calculator
     {
 
         private const int MaleAdditionalValue = 5;
@@ -25,7 +25,7 @@ namespace SztucznaIntCw.Classes.NonAbstract.CalculatorDirectory
 
             var TDEE = BMR + TEA + NEAT;
             TDEE = TDEE + GetTEF(person, TDEE);
-            person.CalculatedTDEE = TDEE;
+            person.CalculatedTDEE = (int)TDEE;
             AssignBMI(person);
 
         }
@@ -44,29 +44,30 @@ namespace SztucznaIntCw.Classes.NonAbstract.CalculatorDirectory
         }
 
         //kalorie spalone podczas aktywności fizycznej
-        private int GetTEA(IPerson person,int BMR)
+        private decimal GetTEA(IPerson person, int BMR)
         {
-            var averageDailyStrenghtActivity = person.WeeklyStrenghtActivity/7;
-            var averageDailyAeroActivity = person.WeeklyAeroActivity/7;
+            var averageDailyStrenghtActivity = person.WeeklyStrenghtActivity/7m;
+            var averageDailyAeroActivity = person.WeeklyAeroActivity/7m;
+           
 
             var strenghtKcal = averageDailyStrenghtActivity == 0 ? 0 :  CalculatorFactories.TeaStrenghtActivityFactory[person.TypeOfPhysique](averageDailyStrenghtActivity,BMR);
             var aeroKcal = averageDailyAeroActivity ==0? 0 :CalculatorFactories.TeaAeroActivityFactory[person.TypeOfPhysique](averageDailyAeroActivity);
 
-            return strenghtKcal + aeroKcal;
+            return Math.Round(strenghtKcal + aeroKcal,MidpointRounding.AwayFromZero);
 
         }
 
         //termogeneza nie wynikająca z ćwiczeń
-        private int GetNEAT(IPerson person)
+        private decimal GetNEAT(IPerson person)
         {
             return CalculatorFactories.NEATValueFactory[person.TypeOfPhysique]();
         }
 
 
         //termogeneza poposiłkowa
-        private int GetTEF(IPerson person,int TDEE)
+        private decimal GetTEF(IPerson person, decimal TDEE)
         {
-            return CalculatorFactories.TEFValueFactory[person.TypeOfPhysique](TDEE);
+            return Math.Round(CalculatorFactories.TEFValueFactory[person.TypeOfPhysique](TDEE),MidpointRounding.AwayFromZero);
         }
 
         private void AssignBMI(IPerson person)
