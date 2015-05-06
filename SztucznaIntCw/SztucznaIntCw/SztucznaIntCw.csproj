@@ -35,6 +35,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="MatrixCalculator">
+      <HintPath>..\..\..\MatrixInversion\MatrixCalculator\bin\Debug\MatrixCalculator.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL for Visual Studio 1.1.1\Assemblies\v4.0\MySql.Data.dll</HintPath>
