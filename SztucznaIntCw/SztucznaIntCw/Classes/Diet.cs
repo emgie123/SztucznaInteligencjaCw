@@ -27,9 +27,10 @@ namespace SztucznaIntCw.Classes
 
         public void GenerateDiet()
         {
-            
             foreach (var meal in Meals)
             {
+                int proteinCounter = 0, carbCounter = 0, fatCounter = 0;
+                bool correctMeal = true;
                 getMacroElementForCurrentMeal(MainSourceOf.Protein, meal.Key, _proteinProducts);
                 getMacroElementForCurrentMeal(MainSourceOf.Carbs, meal.Key, _carbsProducts);
                 getMacroElementForCurrentMeal(MainSourceOf.Fat, meal.Key, _fatProducts);
@@ -37,28 +38,60 @@ namespace SztucznaIntCw.Classes
                 //composeMeal(_proteinProducts, meal.Value);
                 //composeMeal(_carbsProducts, meal.Value);
                 //composeMeal(_fatProducts, meal.Value);
-                getMeal(meal.Value, _proteinProducts, _carbsProducts, _fatProducts);
+                //getMeal(meal.Value, _proteinProducts, _carbsProducts, _fatProducts);
 
+                int i = 0, j = 0, k = 0;
+                int errorCode = getMeal(meal.Value, _proteinProducts[i], _carbsProducts[j], _fatProducts[k]);
+                while (errorCode != 0)
+                {
+                    switch (errorCode)
+                    {
+                        case 1:
+                        {
+                            j++;
+                            break;
+                        }
+                        case 2:
+                        {
+                            k++;
+                            break;
+                        }
+                        case 3:
+                        {
+                            i++;
+                            break;
+                        }
+                    }
+                    if (i >= _proteinProducts.Count || j >= _carbsProducts.Count || k >= _fatProducts.Count)
+                    {
+                        break;
+                    }
+                    errorCode = getMeal(meal.Value, _proteinProducts[i], _carbsProducts[j], _fatProducts[k]);
+                }
+                foreach (var product in meal.Value.MealProducts.Keys)
+                {
+                    ChoosenProducts.Remove(product);
+                }
             }
             
             
         }
 
-        private void getMeal(IMeal meal, List<IProduct> protProducts, List<IProduct> carbProducts,
-            List<IProduct> fatProducts)
+        private int getMeal(IMeal meal, IProduct protProduct, IProduct carbProduct, IProduct fatProduct)
         {
+
             float[,] macroElements = new float[3,3];
-            macroElements[0, 0] = (float) protProducts[0].Protein;
-            macroElements[0, 1] = (float) carbProducts[0].Protein;
-            macroElements[0, 2] = (float) fatProducts[0].Protein;
+            macroElements[0, 0] = (float) protProduct.Protein;
+            macroElements[0, 1] = (float)carbProduct.Protein;
+            macroElements[0, 2] = (float)fatProduct.Protein;
 
-            macroElements[1, 0] = (float) protProducts[0].Carbs;
-            macroElements[1, 1] = (float) carbProducts[0].Carbs;
-            macroElements[1, 2] = (float) fatProducts[0].Carbs;
+            macroElements[1, 0] = (float) protProduct.Carbs;
+            macroElements[1, 1] = (float)carbProduct.Carbs;
+            macroElements[1, 2] = (float) fatProduct.Carbs;
 
-            macroElements[2, 0] = (float) protProducts[0].Fat;
-            macroElements[2, 1] = (float) carbProducts[0].Fat;
-            macroElements[2, 2] = (float) fatProducts[0].Fat;
+            macroElements[2, 0] = (float) protProduct.Fat;
+            macroElements[2, 1] = (float)carbProduct.Fat;
+            macroElements[2, 2] = (float) fatProduct.Fat;
 
             D2Matrix constValues = new D2Matrix(macroElements);
 
@@ -81,18 +114,34 @@ namespace SztucznaIntCw.Classes
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    resultArray[i] = constValues[i, j]*macroElementsTotal[j];
+                    resultArray[i] += constValues[i, j]*macroElementsTotal[j];
+                }
+            }
+            int errorCode = 0;
+            if (resultArray[0] < 0 || resultArray[1] < 0 || resultArray[2] < 0)
+            {
+
+                if (protProduct.Rating <= carbProduct.Rating && protProduct.Rating <= fatProduct.Rating)
+                {
+                    return errorCode = 1;
+
+                }
+                else if (carbProduct.Rating <= protProduct.Rating && carbProduct.Rating <= fatProduct.Rating)
+                {
+                    return errorCode = 2;
+                }
+                else if (fatProduct.Rating <= protProduct.Rating && fatProduct.Rating <= carbProduct.Rating)
+                {
+                    return errorCode = 3;
                 }
             }
 
-            meal.MealProducts.Add(protProducts[0], (decimal)resultArray[0]);
-            meal.MealProducts.Add(carbProducts[0], (decimal)resultArray[1]);
-            meal.MealProducts.Add(fatProducts[0], (decimal)resultArray[2]);
 
-            protProducts.RemoveAt(0);
-            carbProducts.RemoveAt(0);
-            fatProducts.RemoveAt(0);
+            meal.MealProducts.Add(protProduct, (decimal)resultArray[0] * 100);
+            meal.MealProducts.Add(carbProduct, (decimal)resultArray[1] * 100);
+            meal.MealProducts.Add(fatProduct, (decimal)resultArray[2] * 100);
 
+            return errorCode;
         }
 
         private void getMacroElementForCurrentMeal(MainSourceOf macroElement, int mealNumber, List<IProduct> destinationList)

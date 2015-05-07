@@ -15,6 +15,9 @@ namespace SztucznaIntCw
     public partial class YourMeals : Form
     {
         private string MealTemplate = "{0}\t\t{1} gram\n";
+        private string ProteinContent = "\nBiałka: {0}/{1} gram\n";
+        private string CarbContent = "Węglowodany: {0}/{1} gram\n";
+        private string FatContent = "Tłuszcze: {0}/{1} gram\n";
         public YourMeals()
         {
             InitializeComponent();
@@ -34,10 +37,17 @@ namespace SztucznaIntCw
             };
             for (int i = 0; i < person.diet.Meals.Count; i++)
             {
-                foreach (var meal in person.diet.Meals[i].MealProducts)
+                decimal proteins = 0, carbs = 0, fats = 0;
+                foreach (var product in person.diet.Meals[i].MealProducts)
                 {
-                    textBoxs[i].AppendText(string.Format(MealTemplate, meal.Key.Name, Math.Round(meal.Value, 2).ToString()));
+                    proteins += (product.Value * product.Key.Protein) / 100;
+                    carbs += (product.Value * product.Key.Carbs) / 100;
+                    fats += (product.Value * product.Key.Fat) / 100;
+                    textBoxs[i].AppendText(string.Format(MealTemplate, product.Key.Name, Math.Round(product.Value, 2).ToString()));
                 }
+                textBoxs[i].AppendText(string.Format(ProteinContent, Math.Round(proteins, 2), person.diet.Meals[i].TotalGramsOfProteins));
+                textBoxs[i].AppendText(string.Format(CarbContent, Math.Round(carbs, 2), person.diet.Meals[i].TotalGramsOfCarbs));
+                textBoxs[i].AppendText(string.Format(FatContent, Math.Round(fats, 2), person.diet.Meals[i].TotalGramsOfFats));
             }
         }
 
