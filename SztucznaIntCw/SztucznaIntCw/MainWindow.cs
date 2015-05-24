@@ -249,18 +249,12 @@ namespace SztucznaIntCw
             };
             questionWindow.ShowDialog();
 
-            AddKcalDifferenceBasedOnDietType();
-
-            //Tooooooo musisz dodac do 2 buttona tez
             CalculateKcalAndPrepareDiet();
       
             SystemUser.diet.GenerateDiet();
 
             YourMeals showMeals = new YourMeals(SystemUser);
             showMeals.ShowDialog();
-            // SystemUser.diet.Meals =;
-
-
         }
 
         private void ageTextBox_KeyPress(object sender, KeyPressEventArgs e)
